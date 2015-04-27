@@ -7,12 +7,23 @@
         android:id="@+id/yes"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="#ff38ff00"></RelativeLayout>
+        android:background="#ff38ff00"
+        android:layout_alignTop="@+id/no"
+        android:layout_toLeftOf="@+id/no"
+        android:layout_toStartOf="@+id/no"
+        android:layout_marginRight="49dp"
+        android:layout_marginEnd="49dp"></RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/no"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="#ffff0300"></RelativeLayout>
+        android:background="#ffff1b00"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="62dp"
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="124dp"></RelativeLayout>
 
 </RelativeLayout>
