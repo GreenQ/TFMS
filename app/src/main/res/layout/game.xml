@@ -24,7 +24,8 @@
         android:layout_toLeftOf="@+id/no"
         android:layout_toStartOf="@+id/no"
         android:layout_marginRight="49dp"
-        android:layout_marginEnd="49dp"></RelativeLayout>
+        android:layout_marginEnd="49dp"
+        android:onClick="PressYes"></RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/no"
@@ -36,6 +37,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginRight="62dp"
         android:layout_marginEnd="62dp"
-        android:layout_marginBottom="124dp"></RelativeLayout>
+        android:layout_marginBottom="124dp"
+        android:onClick="PressNo"></RelativeLayout>
 
 </RelativeLayout>
