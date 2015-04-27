@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="q1a">true</string>
+    <string name="q1a">false</string>
+    <string name="q2a">true</string>
+    <string name="q3a">false</string>
+    <string name="q4a">true</string>
+    <string name="q5a">true</string>
+    <string name="q6a">false</string>
+    <string name="q7a">false</string>
+    <string name="q8a">true</string>
+    <string name="q9a">false</string>
+    <string name="q10a">false</string>
 </resources>
