@@ -28,6 +28,6 @@ public class Level {
     {
         if(Boolean.valueOf(IsFactCorrect))
             return false;
-        return true;
+        else return true;
     }
 }

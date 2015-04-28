@@ -29,7 +29,7 @@ public class Preferences {
     //region #CHECK RANGES
     private boolean CheckLevelRange(int i)
     {
-        if(i > 0 && i <201)
+        if(i > 0 && i <11)
             return true;
         else
             return false;
