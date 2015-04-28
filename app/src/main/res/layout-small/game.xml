@@ -25,7 +25,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp"></RelativeLayout>
+        android:layout_marginStart="37dp"
+        android:onClick="PressYes"></RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/no"
@@ -37,6 +38,43 @@
         android:layout_alignParentEnd="true"
         android:layout_marginRight="46dp"
         android:layout_marginEnd="46dp"
-        android:layout_marginBottom="118dp"></RelativeLayout>
+        android:layout_marginBottom="118dp"
+        android:onClick="PressNo"></RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prev lvl"
+            android:id="@+id/goToPrevLvl"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:onClick="PrevLevel"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="curLvl"
+            android:id="@+id/txtCurLvl"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next Lvl"
+            android:id="@+id/goToNextLvl"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:onClick="NextLevel"/>
+    </RelativeLayout>
 
 </RelativeLayout>
