@@ -89,6 +89,11 @@ public class GameActivity extends ActionBarActivity {
         txtQuestion.setText(level.Fact);
         txtCurLvl.setText(String.valueOf(preferences.GetCurrentLevel()));
     }
+
+    public void PressBack(View view)
+    {
+        super.finish();
+    }
     //endregion
 
     //region #SUPPLEMENT
