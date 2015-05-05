@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/game">
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/play"
+        android:background="@drawable/btn1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+
+   <ImageButton
+       android:layout_width="70dp"
+       android:layout_height="70dp"
+       android:background="@drawable/shop"
+       android:layout_below="@+id/play"
+       android:layout_alignParentRight="true"
+       android:layout_marginRight="100dp"
+       android:layout_marginTop="15dp"/>
+
+    <ImageButton
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/play"
+        android:background="@drawable/about"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="100dp"/>
+
+</RelativeLayout>
