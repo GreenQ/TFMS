@@ -22,7 +22,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_height="50dp"
         android:layout_below="@id/crt">
@@ -52,6 +52,22 @@
             android:id="@+id/imageView"
             android:layout_alignLeft="@+id/hp2" />
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/crt"
+        android:background="#ff3d4398"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="отгадать"
+            android:textSize="30sp"
+            android:background="#00FFFFFF"/>
+        </RelativeLayout>
+
     <RelativeLayout
         android:layout_marginTop="70dp"
         android:layout_width="match_parent"

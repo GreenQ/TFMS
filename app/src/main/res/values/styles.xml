@@ -11,7 +11,7 @@
 
 
             <style name="CustomTextView" parent="@android:style/Widget.TextView">
-                <item name="android:typeface">monospace</item>
+
                 <item name="android:textColor">#ffe8e8e8</item>
                 <item name="android:background">#960398d7</item>
                 <item name="android:height">40dp</item>
