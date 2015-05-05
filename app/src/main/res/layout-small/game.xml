@@ -1,43 +1,97 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/game">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#ff428c56"
+        android:id="@+id/crt">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="curLvl"
+            android:background="#00FFFFFF"
+            android:textSize="15sp"
+            android:id="@+id/txtCurLvl"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/crt">
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="38dp"
+            android:id="@+id/hp1"
+            android:background="@drawable/oscar"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="15dp"/>
+
+        <ImageView
+            android:layout_marginLeft="25dp"
+            android:layout_width="12dp"
+            android:layout_height="38dp"
+            android:id="@+id/hp2"
+            android:background="@drawable/oscar"
+            android:layout_alignLeft="@+id/hp1"
+            android:layout_marginRight="15dp"/>
+
+        <ImageView
+            android:layout_marginLeft="25dp"
+            android:layout_width="12dp"
+            android:layout_height="38dp"
+            android:background="@drawable/oscar"
+            android:id="@+id/imageView"
+            android:layout_alignLeft="@+id/hp2" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="70dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:id="@+id/qust"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
         <TextView
             android:id="@+id/txtQuestion"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Фурман был найлучшим врагом доктору шкандыбайке."
-            android:textSize="20sp"
+            android:layout_height="200dp"
+            android:text="В процессе съёмок фильма «Рокки 4» Сталлоне предложил Дольфу Лундгрену, исполнявшему роль советского боксёра Ивана Драго, драться по-настоящему, чтобы сцена боя выглядела максимально правдоподобно. В итоге после одного из ударов Лундгрена Сталлоне увезли в больницу, где он восстанавливался 8 дней."
+            android:textSize="15sp"
+            android:background="#00FFFFFF"
+            android:textColor="#ffe1ffd7"
             android:gravity="center"/>
-        </RelativeLayout>
+    </RelativeLayout>
+
+
 
     <RelativeLayout
-    android:id="@+id/yes"
-    android:layout_width="100dp"
-    android:layout_height="100dp"
-    android:background="#ff38ff00"
-        android:layout_alignTop="@+id/no"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp"
-        android:onClick="PressYes"></RelativeLayout>
+        android:id="@+id/yes"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/row_y"
+        android:onClick="PressYes"
+        android:layout_marginLeft="40dp"
+        android:layout_below="@+id/qust"
+        android:layout_marginTop="10dp"
+        ></RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/no"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="#ffff0300"
-        android:layout_alignParentBottom="true"
+        android:background="@drawable/row_n"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="46dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="118dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/qust"
         android:onClick="PressNo"></RelativeLayout>
 
     <RelativeLayout
@@ -56,14 +110,7 @@
             android:layout_alignParentStart="true"
             android:onClick="PrevLevel"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="curLvl"
-            android:id="@+id/txtCurLvl"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+
 
         <Button
             android:layout_width="wrap_content"
@@ -75,5 +122,6 @@
             android:layout_alignParentEnd="true"
             android:onClick="NextLevel"/>
     </RelativeLayout>
+
 
 </RelativeLayout>

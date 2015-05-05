@@ -25,12 +25,15 @@ public class GameActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         try {
             super.onCreate(savedInstanceState);
+            //requestWindowFeature(Window.FEATURE_NO_TITLE);
             setContentView(R.layout.game);
 
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-//requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+
+
             preferences = new Preferences(this);
             level = new Level(this, preferences.GetCurrentLevel());
 
