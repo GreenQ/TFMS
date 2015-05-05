@@ -12,7 +12,10 @@ public class Package {
 
     public Package(int id, String name, int minQuestion, int maxQuestion)
     {
-
+        Id = id;
+        Name = name;
+        MinQuestion = minQuestion;
+        MaxQuestion = maxQuestion;
     }
 
     public Package(){}
