@@ -6,8 +6,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="#ff428c56"
+        android:layout_height="35dp"
+        android:background="@drawable/top_panel"
         android:id="@+id/crt">
 
         <RelativeLayout
@@ -168,7 +168,7 @@
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:text="В процессе съёмок фильма «Рокки 4» Сталлоне предложил Дольфу Лундгрену, исполнявшему роль советского боксёра Ивана Драго, драться по-настоящему, чтобы сцена боя выглядела максимально правдоподобно. В итоге после одного из ударов Лундгрена Сталлоне увезли в больницу, где он восстанавливался 8 дней."
-            android:textSize="15sp"
+            android:textSize="17sp"
             android:background="#00FFFFFF"
             android:textColor="#ffe1ffd7"
             android:gravity="center"/>
