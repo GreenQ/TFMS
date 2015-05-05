@@ -80,4 +80,15 @@ public class Package {
         packages[49] = new Package(50, "Уровень 50", 491, 500);
         return packages;
     }
+
+    public static Package GetPackage(String name, Package[] packages)
+    {
+        for(int i = 0; i < packages.length; i++)
+        {
+            if(Globals.GetPackages()[i].Name == name)
+                return packages[i];
+        }
+        return null;
+    }
+    //
 }

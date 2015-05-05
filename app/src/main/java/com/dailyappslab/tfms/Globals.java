@@ -4,7 +4,7 @@ package com.dailyappslab.tfms;
  * Created by GreenQ on 05.05.2015.
  */
 public class Globals {
-    public static int CurrentPackage;
+    public static Package CurrentPackage;
     public static int CurrentLevel;
     public static int CurrentGold;
 
@@ -65,3 +65,4 @@ public class Globals {
         return packages;
     }
 }
+//

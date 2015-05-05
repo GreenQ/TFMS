@@ -18,6 +18,7 @@ public class GameActivity extends ActionBarActivity {
     TextView txtCurLvl;
     Level level;
     Preferences preferences;
+    int currentLevel;
     //endregion
 
     //region #OVERRIDED METHODS
@@ -35,13 +36,14 @@ public class GameActivity extends ActionBarActivity {
 
 
             preferences = new Preferences(this);
-            level = new Level(this, preferences.GetCurrentLevel());
+            currentLevel = Globals.CurrentPackage.MinQuestion;
+            level = new Level(this, currentLevel);
 
             txtQuestion = (TextView) findViewById(R.id.txtQuestion);
             txtQuestion.setText(level.Fact);
 
             txtCurLvl = (TextView) findViewById(R.id.txtCurLvl);
-            txtCurLvl.setText(String.valueOf(preferences.GetCurrentLevel()));
+            txtCurLvl.setText(String.valueOf(currentLevel));
 
         }
         catch (Exception ex)
@@ -76,18 +78,21 @@ public class GameActivity extends ActionBarActivity {
 
     public void NextLevel(View view)
     {
+        currentLevel = currentLevel+1;
         preferences.EditLevel(preferences.GetCurrentLevel() + 1);
-        level = new Level(this, preferences.GetCurrentLevel());
+        level = new Level(this, currentLevel);
         txtQuestion.setText(level.Fact);
-        txtCurLvl.setText(String.valueOf(preferences.GetCurrentLevel()));
+        txtCurLvl.setText(String.valueOf(currentLevel));
     }
 
     public void PrevLevel(View view)
     {
-        preferences.EditLevel(preferences.GetCurrentLevel() - 1);
-        level = new Level(this, preferences.GetCurrentLevel());
+        currentLevel = currentLevel-1;
+        preferences.EditLevel(currentLevel);
+        level = new Level(this, currentLevel);
         txtQuestion.setText(level.Fact);
-        txtCurLvl.setText(String.valueOf(preferences.GetCurrentLevel()));
+        txtCurLvl.setText(String.valueOf(currentLevel));
+        //
     }
 
     public void PressBack(View view)
