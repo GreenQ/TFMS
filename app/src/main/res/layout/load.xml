@@ -6,15 +6,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/game">
+        android:background="@drawable/load">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="ЗАГРУЗКА"
-            android:background="#00FFFFFF"
-            android:textSize="40sp"
-            android:layout_centerInParent="true"/>
+       
 
         </RelativeLayout>
 
