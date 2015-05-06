@@ -90,5 +90,15 @@ public class Package {
         }
         return null;
     }
+
+    public static Package GetNextPackage(Package pack, Package[] packages)
+    {
+        for(int i = 0; i < packages.length; i++)
+        {
+            if(Globals.GetPackages()[i] == pack)
+                return packages[i+1];
+        }
+        return null;
+    }
     //
 }

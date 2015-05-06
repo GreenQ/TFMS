@@ -45,9 +45,9 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:textColor="#fffdfbff"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:background="#00FFFFFF"
                 android:text="Тут якийсь факт"
                 android:id="@+id/txtFact"/>
@@ -58,7 +58,7 @@
             android:layout_width="200dp"
             android:layout_height="40dp"
             android:layout_below="@+id/fac"
-            android:id="@+id/prod"
+            android:id="@+id/btnContinue"
             android:layout_marginTop="10dp"
             android:background="#ff5fd14d"
             android:layout_centerHorizontal="true"
@@ -75,8 +75,6 @@
                 android:textSize="25sp"/>
 
         </RelativeLayout>
-
-
 
 
     </RelativeLayout>
