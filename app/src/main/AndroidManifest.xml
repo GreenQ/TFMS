@@ -49,6 +49,10 @@
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
 
+        <activity android:name=".GuessActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Dialog">
+        </activity>
     </application>
 
 </manifest>

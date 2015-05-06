@@ -1,5 +1,9 @@
 package com.dailyappslab.tfms;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+
 /**
  * Created by GreenQ on 05.05.2015.
  */
@@ -63,6 +67,19 @@ public class Globals {
         packages[48] = new Package(49, "Уровень 49", 481, 490);
         packages[49] = new Package(50, "Уровень 50", 491, 500);
         return packages;
+    }
+
+    public static void DisplayAlert(Context context, String string, String title)
+    {
+        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(context);
+        dlgAlert.setMessage(string);
+        dlgAlert.setTitle(title);
+        dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        dlgAlert.setCancelable(true);
+        dlgAlert.create().show();
     }
 }
 //

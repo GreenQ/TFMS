@@ -27,4 +27,9 @@ public class MainActivity extends ActionBarActivity {
         Intent i = new Intent(MainActivity.this, PackageActivity.class);
         startActivity(i);
     }
+
+    @Override
+    public void onBackPressed() {
+          super.onBackPressed();
+    }
 }
