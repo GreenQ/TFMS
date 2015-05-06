@@ -28,6 +28,12 @@ public class MainActivity extends ActionBarActivity {
         startActivity(i);
     }
 
+    public void StartGameshop(View view)
+    {
+        Intent i = new Intent(MainActivity.this, MarketActivity.class);
+        startActivity(i);
+    }
+
     @Override
     public void onBackPressed() {
           super.onBackPressed();

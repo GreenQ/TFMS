@@ -90,6 +90,7 @@
             android:layout_gravity="center_horizontal"
 
             android:layout_below="@+id/m5"
+            android:onClick="CloseDialog"
             />
 
         <RelativeLayout
