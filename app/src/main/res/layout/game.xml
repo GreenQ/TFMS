@@ -134,13 +134,7 @@
             android:layout_alignLeft="@+id/hp1"
             android:layout_marginRight="15dp"/>
 
-        <ImageView
-            android:layout_marginLeft="25dp"
-            android:layout_width="12dp"
-            android:layout_height="38dp"
-            android:background="@drawable/oscar"
-            android:id="@+id/imageView"
-            android:layout_alignLeft="@+id/hp2" />
+
     </RelativeLayout>
 
     <RelativeLayout
