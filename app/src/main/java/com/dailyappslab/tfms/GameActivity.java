@@ -1,7 +1,10 @@
 package com.dailyappslab.tfms;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,20 +14,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class GameActivity extends ActionBarActivity {
+public class GameActivity extends Activity {
 
     //region #DECLARATION
     TextView txtQuestion;
     TextView txtCurLvl;
     Level level;
+    PopUps popups;
     Preferences preferences;
     int currentLevel;
+
     //endregion
 
     //region #OVERRIDED METHODS
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
             super.onCreate(savedInstanceState);
             //requestWindowFeature(Window.FEATURE_NO_TITLE);
             setContentView(R.layout.game);
@@ -34,7 +40,7 @@ public class GameActivity extends ActionBarActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 
-
+            popups = new PopUps(this);
             preferences = new Preferences(this);
             currentLevel = Globals.CurrentPackage.MinQuestion;
             level = new Level(this, currentLevel);
@@ -61,6 +67,8 @@ public class GameActivity extends ActionBarActivity {
                 DisplayAlert("Вы угадали", "Поздравляем!");
             else
                 DisplayAlert("Вы не угадали", "Не поздравляем!");
+
+            NextLevel(null);
         }
         catch (Exception ex)
         {
@@ -69,11 +77,38 @@ public class GameActivity extends ActionBarActivity {
     }
 
     public void PressNo(View view)
+    {try {
+        if (level.PressNo()) {
+            //popups.ShowWindow(GuessActivity.class);
+            Intent i = new Intent (GameActivity.this, GuessActivity.class);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent i = new Intent(GameActivity.this, GuessActivity.class);
+                    startActivity(i);
+                }
+            }, 100);
+        }
+            //DisplayAlert("Вы угадали", "Поздравляем!");
+        else {
+            Intent i = new Intent (GameActivity.this, GuessActivity.class);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent i = new Intent(GameActivity.this, GuessActivity.class);
+                    startActivity(i);
+                }
+            }, 100);
+            //popups.ShowWindow(GuessActivity.class);
+        }
+        // DisplayAlert("Вы не угадали", "Не поздравляем!");
+
+        NextLevel(null);
+    }
+    catch (Exception ex)
     {
-        if(level.PressNo())
-            DisplayAlert("Вы угадали", "Поздравляем!");
-        else
-            DisplayAlert("Вы не угадали", "Не поздравляем!");
+        DisplayAlert(ex.getMessage(), "Ошибочка вышла");
+    }
     }
 
     public void NextLevel(View view)
