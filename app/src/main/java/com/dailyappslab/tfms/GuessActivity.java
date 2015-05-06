@@ -30,7 +30,7 @@ public class GuessActivity extends Activity {
 
     }
 
-    
+    //private void SetData
 
 
 }
