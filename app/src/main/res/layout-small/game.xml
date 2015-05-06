@@ -133,28 +133,29 @@
             android:layout_alignLeft="@+id/hp1"
             android:layout_marginRight="15dp"/>
 
-        <ImageView
-            android:layout_marginLeft="25dp"
-            android:layout_width="12dp"
-            android:layout_height="38dp"
-            android:background="@drawable/oscar"
-            android:id="@+id/imageView"
-            android:layout_alignLeft="@+id/hp2" />
+        <!--<ImageView-->
+            <!--android:layout_marginLeft="25dp"-->
+            <!--android:layout_width="12dp"-->
+            <!--android:layout_height="38dp"-->
+            <!--android:background="@drawable/oscar"-->
+            <!--android:id="@+id/imageView"-->
+            <!--android:layout_alignLeft="@+id/hp2" />-->
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/crt"
-        android:background="#ff3d4398"
+
         android:layout_marginTop="5dp">
         <TextView
+            android:textColor="#FFD700"
+            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="отгадать"
-            android:textSize="30sp"
-            android:background="#00FFFFFF"/>
+            android:text="1/10"
+            android:textSize="30sp"/>
     </RelativeLayout>
 
     <RelativeLayout

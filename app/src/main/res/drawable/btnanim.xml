@@ -9,9 +9,9 @@
     <item android:drawable="@drawable/btn6" android:duration="30"/>
     <item android:drawable="@drawable/btn7" android:duration="30"/>
 
-    <item android:drawable="@drawable/btn8" android:duration="30"/>
-    <item android:drawable="@drawable/btn9" android:duration="30"/>
-    <item android:drawable="@drawable/btn10" android:duration="30"/>
+    <!--<item android:drawable="@drawable/btn8" android:duration="30"/>-->
+    <!--<item android:drawable="@drawable/btn9" android:duration="30"/>-->
+    <!--<item android:drawable="@drawable/btn10" android:duration="30"/>-->
 
     <item android:drawable="@drawable/btn1" android:duration="30"/>
 

@@ -112,19 +112,18 @@
     </RelativeLayout>
 
     <ImageButton
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:id="@+id/play"
-        android:background="@drawable/btn1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
+        android:background="@drawable/btnanim"
+        android:layout_centerInParent="true"
         android:onClick="StartGame"/>
 
 
    <ImageButton
        android:layout_width="50dp"
        android:layout_height="50dp"
-       android:background="@drawable/shop"
+       android:background="@drawable/istore1"
        android:layout_below="@+id/play"
        android:layout_alignParentRight="true"
        android:layout_marginRight="100dp"
@@ -134,7 +133,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_below="@+id/play"
-        android:background="@drawable/about"
+        android:background="@drawable/info1"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="100dp"/>
 

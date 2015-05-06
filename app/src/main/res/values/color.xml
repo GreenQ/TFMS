@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="dialogbg">#00F8F8F8</color>
-    <color name="yellow_item">#cac637</color>
-    <color name="green_item">#3c9f5f</color>
+    <color name="yellow1_item">#ffddd93c</color>
+    <color name="yellow2_item">#cac637</color>
+    <color name="green1_item">#3c9f5f</color>
+    <color name="green2_item">#48c073</color>
+
+
+    ff48c073
 </resources>
