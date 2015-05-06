@@ -1,5 +1,6 @@
 package com.dailyappslab.tfms;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class GameActivity extends ActionBarActivity {
+public class GameActivity extends Activity {
 
     //region #DECLARATION
     TextView txtQuestion;
@@ -29,6 +30,7 @@ public class GameActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
             super.onCreate(savedInstanceState);
             //requestWindowFeature(Window.FEATURE_NO_TITLE);
             setContentView(R.layout.game);

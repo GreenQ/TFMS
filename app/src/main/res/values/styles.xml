@@ -3,7 +3,6 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 
-        <item name="android:textViewStyle">@style/CustomTextView</item>
 
 
             </style>
@@ -16,7 +15,14 @@
             </style>
 
 
-
+    <style name="AppThemeDialog" parent="Base.Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/dialogbg</item>
+        <item name="android:label">none</item>
+        <!--<item name="windowCloseOnTouchOutside">false</item>-->
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+    </style>
 
 
 

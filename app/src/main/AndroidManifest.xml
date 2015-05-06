@@ -13,12 +13,12 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:label=""
         android:theme="@style/AppTheme" >
         <activity
             android:name=".LabelLoader"
             android:screenOrientation="portrait"
-            android:label="@string/app_name"
+            android:label=""
             android:theme="@style/Theme.AppCompat.NoActionBar"
             >
 
@@ -51,7 +51,7 @@
 
         <activity android:name=".GuessActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Dialog">
+            android:theme="@style/AppThemeDialog">
         </activity>
     </application>
 
