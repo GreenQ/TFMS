@@ -11,6 +11,7 @@ public class Globals {
     public static Package CurrentPackage;
     public static int CurrentLevel;
     public static int CurrentGold;
+    public static boolean IsCorrect;
 
     public static Package[] GetPackages()
     {

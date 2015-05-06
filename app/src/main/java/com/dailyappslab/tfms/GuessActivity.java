@@ -30,7 +30,11 @@ public class GuessActivity extends Activity {
 
     }
 
-    //private void SetData
+    private void SetData()
+    {
+        if(Globals.IsCorrect)
+            txtIsCorrect.setText("Верно!");
+    }
 
 
 }
