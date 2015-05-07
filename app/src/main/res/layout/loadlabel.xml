@@ -3,9 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <VideoView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/logovt"/>
+        android:background="@drawable/logolol"/>
 
 </LinearLayout>

@@ -29,6 +29,6 @@ public class LabelLoader extends ActionBarActivity {
                 //overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
                 finish();
             }
-        }, 1500);
+        }, 5000);
     }
 }
