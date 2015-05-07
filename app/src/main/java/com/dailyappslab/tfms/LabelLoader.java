@@ -25,12 +25,22 @@ public class LabelLoader extends ActionBarActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+
+
         ImageView imageView = (ImageView) findViewById(R.id.loadlabel);
         imageView.setBackgroundResource(R.drawable.loadanim);
 
         mAnimationDrawable = (AnimationDrawable) imageView.getBackground();
 
         mAnimationDrawable.start();
+
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+               mAnimationDrawable.stop();
+            }
+        }, 1400);
 
         new Handler().postDelayed(new Runnable() {
             @Override

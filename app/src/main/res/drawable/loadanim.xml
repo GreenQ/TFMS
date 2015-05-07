@@ -4,14 +4,14 @@
     <item android:drawable="@drawable/logo13" android:duration="130"/>
     <item android:drawable="@drawable/logo23" android:duration="130"/>
     <item android:drawable="@drawable/logo33" android:duration="130"/>
-    <!--<item android:drawable="@drawable/logo43" android:duration="130"/>-->
-    <!--<item android:drawable="@drawable/logo53" android:duration="130"/>-->
+    <item android:drawable="@drawable/logo43" android:duration="130"/>
+    <item android:drawable="@drawable/logo53" android:duration="130"/>
 
-    <!--<item android:drawable="@drawable/logo63" android:duration="130"/>-->
-    <!--<item android:drawable="@drawable/logo73" android:duration="130"/>-->
-    <!--<item android:drawable="@drawable/logo83" android:duration="130"/>-->
-    <!--<item android:drawable="@drawable/logo93" android:duration="130"/>-->
-    <!--<item android:drawable="@drawable/logo103" android:duration="130"/>-->
-    <!--<item android:drawable="@drawable/logo113" android:duration="200"/>-->
+    <item android:drawable="@drawable/logo63" android:duration="130"/>
+    <item android:drawable="@drawable/logo73" android:duration="130"/>
+    <item android:drawable="@drawable/logo83" android:duration="130"/>
+    <item android:drawable="@drawable/logo93" android:duration="130"/>
+    <item android:drawable="@drawable/logo103" android:duration="130"/>
+    <item android:drawable="@drawable/logo113" android:duration="200"/>
 
 </animation-list>
