@@ -43,4 +43,10 @@ public class PackageActivity extends ActionBarActivity {
 //
 
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        finish();
+    }
 }
