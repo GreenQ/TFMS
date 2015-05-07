@@ -55,7 +55,7 @@
         <RelativeLayout
             android:layout_width="210dp"
             android:layout_height="60dp"
-            android:background="@drawable/btncon"
+            android:background="@drawable/shadow"
             android:id="@+id/btnOpenLetter"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
