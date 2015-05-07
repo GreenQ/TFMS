@@ -96,7 +96,7 @@
                     android:layout_centerVertical="true"
                     android:textColor="#ffffffff"
                     android:textSize="22sp"
-                    android:id="@+id/txtCurLvl"
+                    android:id="@+id/txtCurPackage"
                     android:alpha="0.7"/>
 
             </RelativeLayout>
@@ -150,7 +150,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1/10"
-            android:textSize="30sp"/>
+            android:textSize="30sp"
+            android:id="@+id/txtCurLvl"/>
     </RelativeLayout>
 
     <RelativeLayout

@@ -95,7 +95,7 @@ public class Package {
     {
         for(int i = 0; i < packages.length; i++)
         {
-            if(Globals.GetPackages()[i] == pack)
+            if(Globals.GetPackages()[i].Id == pack.Id)
                 return packages[i+1];
         }
         return null;

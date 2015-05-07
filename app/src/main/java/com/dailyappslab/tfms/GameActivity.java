@@ -19,16 +19,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 
 public class GameActivity extends Activity {
 
     //region #DECLARATION
     TextView txtQuestion;
     TextView txtCurLvl;
+    TextView txtCurPackage;
     Level level;
     Preferences preferences;
     Package[] packages;
-    int currentLevel;
+    int displayedLevel;
 
     //endregion
 
@@ -51,11 +54,17 @@ public class GameActivity extends Activity {
             Globals.CurrentLevel = Globals.CurrentPackage.MinQuestion;
             level = new Level(this, Globals.CurrentLevel);
 
+            displayedLevel = 1;
+
             txtQuestion = (TextView) findViewById(R.id.txtQuestion);
             txtQuestion.setText(level.Fact);
 
             txtCurLvl = (TextView) findViewById(R.id.txtCurLvl);
-            txtCurLvl.setText(String.valueOf(Globals.CurrentLevel));
+            txtCurLvl.setText(String.valueOf(displayedLevel) + "/10");
+
+            txtCurPackage = (TextView) findViewById(R.id.txtCurPackage);
+            txtCurPackage.setText(String.valueOf(Globals.CurrentPackage.Id));
+
 
         }
         catch (Exception ex)
@@ -70,11 +79,13 @@ public class GameActivity extends Activity {
     {
         try {
             if (level.PressYes())
-                DisplayAlert("Вы угадали", "Поздравляем!");
+                ShowGuessResultPopUp(true);
+                //DisplayAlert("Вы угадали", "Поздравляем!");
             else
-                DisplayAlert("Вы не угадали", "Не поздравляем!");
+                ShowGuessResultPopUp(false);
+                //DisplayAlert("Вы не угадали", "Не поздравляем!");
 
-            NextLevel(null);
+            //NextLevel(null);
         }
         catch (Exception ex)
         {
@@ -111,16 +122,17 @@ public class GameActivity extends Activity {
 
     public void NextLevel(View view)
     {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Globals.CurrentLevel = Globals.CurrentLevel + 1;
-                preferences.EditLevel(preferences.GetCurrentLevel());
-                level = new Level(getBaseContext(), Globals.CurrentLevel);
-                txtQuestion.setText(level.Fact);
-                txtCurLvl.setText(String.valueOf(Globals.CurrentLevel));
-            }
-        }, 1000);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+        displayedLevel = displayedLevel+1;
+        Globals.CurrentLevel = Globals.CurrentLevel + 1;
+        preferences.EditLevel(preferences.GetCurrentLevel());
+        level = new Level(getBaseContext(), Globals.CurrentLevel);
+        txtQuestion.setText(level.Fact);
+        txtCurLvl.setText(String.valueOf(displayedLevel) + "/10");
+//            }
+//        }, 1000);
     }
 
     public void NextPackage()
@@ -137,7 +149,7 @@ public class GameActivity extends Activity {
                 preferences.EditLevel(preferences.GetCurrentLevel());
                 level = new Level(getBaseContext(), Globals.CurrentLevel);
                 txtQuestion.setText(level.Fact);
-                txtCurLvl.setText(String.valueOf(Globals.CurrentLevel));
+                txtCurLvl.setText(String.valueOf(Globals.CurrentLevel) + "/10");
             }
         }, 1000);
     }
@@ -206,9 +218,11 @@ public class GameActivity extends Activity {
             @Override
             public void onClick(View v) {
                 if (Globals.CurrentLevel == Globals.CurrentPackage.MaxQuestion) {
-                    Globals.DisplayAlert(getBaseContext(), "Уровень пройден", "Грац");
+                    //Globals.DisplayAlert(getBaseContext(), "Уровень пройден", "Грац");
                     Globals.CurrentPackage = Package.GetNextPackage(Globals.CurrentPackage, packages);
                     preferences.EditPackage(Globals.CurrentPackage.Id);
+                    txtCurPackage.setText(String.valueOf(Globals.CurrentPackage.Id));
+                    displayedLevel = 0;
                 }
                 NextLevel(null);
                 popupWindowWin.dismiss();
