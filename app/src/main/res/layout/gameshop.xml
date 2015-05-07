@@ -6,6 +6,11 @@
     >
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:alpha="0.0"></RelativeLayout>
 
     <RelativeLayout
         android:layout_width="250dp"
