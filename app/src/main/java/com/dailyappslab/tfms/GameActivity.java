@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -32,6 +34,9 @@ public class GameActivity extends Activity {
     Preferences preferences;
     Package[] packages;
     int displayedLevel;
+    int oscarsAmount;
+    ImageView hp1;
+    ImageView hp2;
 
     //endregion
 
@@ -56,6 +61,9 @@ public class GameActivity extends Activity {
 
             displayedLevel = 1;
 
+            hp1 = (ImageView) findViewById(R.id.hp1);
+            hp2 = (ImageView) findViewById(R.id.hp2);
+
             txtQuestion = (TextView) findViewById(R.id.txtQuestion);
             txtQuestion.setText(level.Fact);
 
@@ -65,7 +73,7 @@ public class GameActivity extends Activity {
             txtCurPackage = (TextView) findViewById(R.id.txtCurPackage);
             txtCurPackage.setText(String.valueOf(Globals.CurrentPackage.Id));
 
-
+            oscarsAmount = 2;
         }
         catch (Exception ex)
         {
@@ -79,13 +87,18 @@ public class GameActivity extends Activity {
     {
         try {
             if (level.PressYes())
+            {
                 ShowGuessResultPopUp(true);
                 //DisplayAlert("Вы угадали", "Поздравляем!");
+            }
             else
+            {
                 ShowGuessResultPopUp(false);
+                RemoveOscar();
                 //DisplayAlert("Вы не угадали", "Не поздравляем!");
 
-            //NextLevel(null);
+                //NextLevel(null);
+            }
         }
         catch (Exception ex)
         {
@@ -110,6 +123,7 @@ public class GameActivity extends Activity {
 //            NextLevel(null);
             //popups.ShowWindow(GuessActivity.class);
             ShowGuessResultPopUp(false);
+            RemoveOscar();
         }
         // DisplayAlert("Вы не угадали", "Не поздравляем!");
 
@@ -182,7 +196,82 @@ public class GameActivity extends Activity {
         startActivityForResult(i, 1);
     }
 
-    private void ShowGuessResultPopUp(boolean isCorrect) {
+    private void ShowWinPopUp()
+    {
+        LayoutInflater layoutInflater
+                = (LayoutInflater) getBaseContext()
+                .getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        View popupView = layoutInflater.inflate(R.layout.game_win, null);
+        final PopupWindow popupWindowWin = new PopupWindow(
+                popupView,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        try {
+            //sadView = new SADView(this, "5536149602e39f1f00000000");
+            //LinearLayout adLayout = (LinearLayout) popupView.findViewById(R.id.admob);
+
+            // Add the adView to it
+            //adLayout.addView(this.sadView);
+            //sadView.loadAd(SADView.LANGUAGE_EN);
+        } catch (Exception ex) {
+        }
+
+        RelativeLayout rltvContinue = (RelativeLayout) popupView.findViewById(R.id.rltvContinue);
+
+
+        rltvContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindowWin.dismiss();
+            }
+        });
+        popupWindowWin.showAtLocation(findViewById(R.id.rootLayout), 0, 0, -10);
+    }
+
+
+    private void ShowLosePopUp()
+    {
+        LayoutInflater layoutInflater
+                = (LayoutInflater) getBaseContext()
+                .getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        View popupView = layoutInflater.inflate(R.layout.game_over, null);
+        final PopupWindow popupWindowWin = new PopupWindow(
+                popupView,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        try {
+            //sadView = new SADView(this, "5536149602e39f1f00000000");
+            //LinearLayout adLayout = (LinearLayout) popupView.findViewById(R.id.admob);
+
+            // Add the adView to it
+            //adLayout.addView(this.sadView);
+            //sadView.loadAd(SADView.LANGUAGE_EN);
+        } catch (Exception ex) {
+        }
+
+        RelativeLayout restart = (RelativeLayout) popupView.findViewById(R.id.rltvRestart);
+        RelativeLayout quit = (RelativeLayout) popupView.findViewById(R.id.rltvQuit);
+        restart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        });
+
+        quit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        popupWindowWin.showAtLocation(findViewById(R.id.rootLayout), 0, 0, -10);
+    }
+
+    private void ShowGuessResultPopUp(final boolean isCorrect) {
 
 
         LayoutInflater layoutInflater
@@ -223,9 +312,15 @@ public class GameActivity extends Activity {
                     preferences.EditPackage(Globals.CurrentPackage.Id);
                     txtCurPackage.setText(String.valueOf(Globals.CurrentPackage.Id));
                     displayedLevel = 0;
+                    ShowWinPopUp();
+                    oscarsAmount = 2;
+                    SetOscarImage();
                 }
                 NextLevel(null);
                 popupWindowWin.dismiss();
+                if (oscarsAmount == -1) {
+                    ShowLosePopUp();
+                }
             }
         });
 
@@ -236,6 +331,39 @@ public class GameActivity extends Activity {
             // DelayedAdsShow();
         } catch (Exception ex) {
             Globals.DisplayAlert(this, ex.getMessage(), "Возникла непредвиденная ошибка");
+        }
+    }
+    //endregion
+
+    //region #OSCARS
+    public void RemoveOscar() {
+        if (oscarsAmount > -1 && oscarsAmount < 3)
+        {
+            oscarsAmount = oscarsAmount - 1;
+            SetOscarImage();
+        }
+    }
+
+    public void AddOscar()
+    {
+        oscarsAmount = oscarsAmount + 1;
+    }
+
+    public void SetOscarImage()
+    {
+        switch (oscarsAmount) {
+            case 0:
+                hp1.setImageResource(R.drawable.leo);
+                hp2.setImageResource(R.drawable.leo);
+                break;
+            case 1:
+                hp1.setImageResource(R.drawable.oscar);
+                hp2.setImageResource(R.drawable.leo);
+                break;
+            case 2:
+                hp1.setImageResource(R.drawable.oscar);
+                hp2.setImageResource(R.drawable.oscar);
+                break;
         }
     }
     //endregion
