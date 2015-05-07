@@ -48,10 +48,18 @@ public class PackageActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Globals.CurrentPackage = Package.GetPackage(((TextView) ((LinearLayout)view).findViewById(R.id.txtViewPackage)).getText().toString(), Globals.GetPackages());
                 if(Globals.CurrentPackage.Id <= preferences.GetCurrentPackage()) {
-                    Intent i = new Intent(PackageActivity.this, GameActivity.class);
-                    startActivity(i);
-                    if(Globals.CurrentPackage.Id == preferences.GetCurrentPackage())
-                        preferences.EditTickets(preferences.GetCurrentTickets() - 1);
+                    if(preferences.GetCurrentTickets() == 0 && Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
+                        Intent i = new Intent(PackageActivity.this, TicketBuyActivity.class);
+                        startActivity(i);
+                    }
+                    else {
+                        Intent i = new Intent(PackageActivity.this, GameActivity.class);
+                        startActivity(i);
+                        if (Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
+                            preferences.EditTickets(preferences.GetCurrentTickets() - 1);
+                            preferences.EditTicketUsageTime(System.currentTimeMillis());
+                        }
+                    }
                 }
                 else {
                     Intent i = new Intent(PackageActivity.this, PackageLockedActivity.class);
@@ -85,16 +93,23 @@ public class PackageActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Globals.CurrentPackage = Package.GetPackage(((TextView) ((LinearLayout)view).findViewById(R.id.txtViewPackage)).getText().toString(), Globals.GetPackages());
                 if(Globals.CurrentPackage.Id <= preferences.GetCurrentPackage()) {
-                    Intent i = new Intent(PackageActivity.this, GameActivity.class);
-                    startActivity(i);
-                    if(Globals.CurrentPackage.Id == preferences.GetCurrentPackage())
-                        preferences.EditTickets(preferences.GetCurrentTickets() - 1);
+                    if(preferences.GetCurrentTickets() == 0 && Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
+                        Intent i = new Intent(PackageActivity.this, TicketBuyActivity.class);
+                        startActivity(i);
+                    }
+                    else {
+                        Intent i = new Intent(PackageActivity.this, GameActivity.class);
+                        startActivity(i);
+                        if (Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
+                            preferences.EditTickets(preferences.GetCurrentTickets() - 1);
+                            preferences.EditTicketUsageTime(System.currentTimeMillis());
+                        }
+                    }
                 }
                 else {
                     Intent i = new Intent(PackageActivity.this, PackageLockedActivity.class);
                     startActivity(i);
                 }
-
             }
         });
     }

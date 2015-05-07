@@ -39,7 +39,7 @@
                     android:background="#00FFFFFF"
                     android:text="100"
                     android:alpha="0.7"
-                    android:id="@+id/textViewGold"
+                    android:id="@+id/txtGold"
                     android:layout_centerVertical="true"
                     android:textSize="18sp"
                     android:layout_marginRight="5dp"

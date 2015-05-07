@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +57,12 @@ public class PackagesArrayAdapter extends ArrayAdapter{
             else if(objects[position].Id == preferences.GetCurrentPackage()) {
                 txtPackage.setBackgroundResource(R.drawable.paki_y);
                 //yellow color
+            }
+            if(position == 0) {
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 80);
+                params.setMargins(5, 12, 5, 2);
+                //params.setMarginStart(12);
+                row.setLayoutParams(params);
             }
             return row;
         }

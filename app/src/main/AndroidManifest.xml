@@ -60,6 +60,9 @@
         <activity android:name=".PackageLockedActivity"
             android:theme="@style/AppThemeDialog"></activity>
 
+        <activity android:name=".TicketBuyActivity"
+            android:theme="@style/AppThemeDialog"></activity>
+
 
     </application>
 

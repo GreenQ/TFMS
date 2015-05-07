@@ -10,12 +10,14 @@ public class Preferences {
     SharedPreferences pLvl;
     SharedPreferences pPackage;
     SharedPreferences pTickets;
+    SharedPreferences pFirstTicketUsageTime;
 
     public Preferences(Context context)
     {
         pLvl = context.getSharedPreferences("LVL", Context.MODE_PRIVATE);
         pPackage = context.getSharedPreferences("PACKAGE", Context.MODE_PRIVATE);
         pTickets = context.getSharedPreferences("TICKETS", Context.MODE_PRIVATE);
+        pFirstTicketUsageTime = context.getSharedPreferences("TICKET_TIME", Context.MODE_PRIVATE);
     }
 
     //region #GET STORED PREFERENCES
@@ -48,6 +50,14 @@ public class Preferences {
         else
             return 1;
     }
+
+    public long GetTicketUsageTime()
+    {
+        long temp = pFirstTicketUsageTime.getLong("TICKET_TIME", 0) ;
+
+       return temp;
+    }
+
     //endregion
 
     //region #CHECK RANGES
@@ -101,6 +111,13 @@ public class Preferences {
             return;
         SharedPreferences.Editor editor = pTickets.edit();
         editor.putInt("TICKETS", i);
+        editor.commit();
+    }
+
+    public void EditTicketUsageTime(long time)
+    {
+        SharedPreferences.Editor editor = pFirstTicketUsageTime.edit();
+        editor.putLong("TICKET_TIME", time);
         editor.commit();
     }
     //endregion

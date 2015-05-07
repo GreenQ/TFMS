@@ -18,6 +18,7 @@ public class MainActivity extends ActionBarActivity {
     AnimationDrawable animation;
     ImageButton btnPlay;
     TextView txtTickets;
+    TextView txtGold;
     Preferences preferences;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +31,11 @@ public class MainActivity extends ActionBarActivity {
 
         preferences = new Preferences(this);
         btnPlay = (ImageButton) findViewById(R.id.btnPlay);
-        txtTickets = (TextView) findViewById(R.id.txtTickets);
 
+        txtTickets = (TextView) findViewById(R.id.txtTickets);
         txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+
+        txtGold = (TextView) findViewById(R.id.txtGold);
         animation = (AnimationDrawable) btnPlay.getBackground();
         animation.setOneShot(true);
 
@@ -59,6 +62,13 @@ public class MainActivity extends ActionBarActivity {
     {
         Intent i = new Intent(MainActivity.this, MarketActivity.class);
         startActivity(i);
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
     }
 
     @Override
