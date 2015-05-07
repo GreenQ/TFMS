@@ -9,20 +9,27 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by GreenQ on 05.05.2015.
  */
 public class PackageActivity extends ActionBarActivity {
+    Preferences preferences;
+    TextView txtTickets;
+
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             //requestWindowFeature(Window.FEATURE_NO_TITLE);
-            setContentView(R.layout.list);
+            setContentView(R.layout.package_list);
 
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        preferences = new Preferences(this);
+        txtTickets = (TextView) findViewById(R.id.txtTickets);
+
+        txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
 
         ListView lvMain = (ListView) findViewById(R.id.lvMain);
 
@@ -43,6 +50,8 @@ public class PackageActivity extends ActionBarActivity {
                 if(Globals.CurrentPackage.Id <= preferences.GetCurrentPackage()) {
                     Intent i = new Intent(PackageActivity.this, GameActivity.class);
                     startActivity(i);
+                    if(Globals.CurrentPackage.Id == preferences.GetCurrentPackage())
+                        preferences.EditTickets(preferences.GetCurrentTickets() - 1);
                 }
                 else {
                     Intent i = new Intent(PackageActivity.this, PackageLockedActivity.class);
@@ -55,11 +64,13 @@ public class PackageActivity extends ActionBarActivity {
 //
 
     }
-
+    @Override
     protected void onResume()
     {
+        super.onResume();
         ListView lvMain = (ListView) findViewById(R.id.lvMain);
 
+        txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
         PackagesArrayAdapter adapter = new PackagesArrayAdapter(this,
                 R.layout.package_list_item, Globals.GetPackages());
         final Preferences preferences = new Preferences(this);
@@ -76,6 +87,8 @@ public class PackageActivity extends ActionBarActivity {
                 if(Globals.CurrentPackage.Id <= preferences.GetCurrentPackage()) {
                     Intent i = new Intent(PackageActivity.this, GameActivity.class);
                     startActivity(i);
+                    if(Globals.CurrentPackage.Id == preferences.GetCurrentPackage())
+                        preferences.EditTickets(preferences.GetCurrentTickets() - 1);
                 }
                 else {
                     Intent i = new Intent(PackageActivity.this, PackageLockedActivity.class);
