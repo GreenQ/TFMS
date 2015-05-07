@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 /**
  * Created by GreenQ on 05.05.2015.
@@ -16,6 +17,9 @@ public class MainActivity extends ActionBarActivity {
 
     AnimationDrawable animation;
     ImageButton btnPlay;
+    TextView txtTickets;
+    Preferences preferences;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        //verridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
@@ -24,9 +28,14 @@ public class MainActivity extends ActionBarActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        preferences = new Preferences(this);
         btnPlay = (ImageButton) findViewById(R.id.btnPlay);
+        txtTickets = (TextView) findViewById(R.id.txtTickets);
+
+        txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
         animation = (AnimationDrawable) btnPlay.getBackground();
         animation.setOneShot(true);
+
 
     }
 

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="250dp"
     android:layout_height="345dp"
-    android:theme="@style/Theme.AppCompat.Dialog"
+    android:theme="@style/AppThemeDialog"
     >
 
 
@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#000000"
-        android:alpha="0.0"></RelativeLayout>
+        android:alpha="0"></RelativeLayout>
 
     <RelativeLayout
         android:layout_width="250dp"

@@ -56,6 +56,36 @@ public class PackageActivity extends ActionBarActivity {
 
     }
 
+    protected void onResume()
+    {
+        ListView lvMain = (ListView) findViewById(R.id.lvMain);
+
+        PackagesArrayAdapter adapter = new PackagesArrayAdapter(this,
+                R.layout.package_list_item, Globals.GetPackages());
+        final Preferences preferences = new Preferences(this);
+
+//        Toast.makeText(this, (String) String.valueOf(preferences.GetCurrentPackage()),
+//                Toast.LENGTH_LONG).show();
+
+        lvMain.setAdapter(adapter);
+        lvMain.setClickable(true);
+        lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Globals.CurrentPackage = Package.GetPackage(((TextView) ((LinearLayout)view).findViewById(R.id.txtViewPackage)).getText().toString(), Globals.GetPackages());
+                if(Globals.CurrentPackage.Id <= preferences.GetCurrentPackage()) {
+                    Intent i = new Intent(PackageActivity.this, GameActivity.class);
+                    startActivity(i);
+                }
+                else {
+                    Intent i = new Intent(PackageActivity.this, PackageLockedActivity.class);
+                    startActivity(i);
+                }
+
+            }
+        });
+    }
+
     @Override
     public void onBackPressed()
     {

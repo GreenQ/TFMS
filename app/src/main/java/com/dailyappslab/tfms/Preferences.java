@@ -9,11 +9,13 @@ import android.content.SharedPreferences;
 public class Preferences {
     SharedPreferences pLvl;
     SharedPreferences pPackage;
+    SharedPreferences pTickets;
 
     public Preferences(Context context)
     {
         pLvl = context.getSharedPreferences("LVL", Context.MODE_PRIVATE);
         pPackage = context.getSharedPreferences("PACKAGE", Context.MODE_PRIVATE);
+        pTickets = context.getSharedPreferences("TICKETS", Context.MODE_PRIVATE);
     }
 
     //region #GET STORED PREFERENCES
@@ -36,6 +38,16 @@ public class Preferences {
         else
             return 1;
     }
+
+    public int GetCurrentTickets()
+    {
+        int temp = pTickets.getInt("TICKETS", 5) ;
+
+        if (CheckTicketsRange(temp))
+            return temp;
+        else
+            return 1;
+    }
     //endregion
 
     //region #CHECK RANGES
@@ -50,6 +62,14 @@ public class Preferences {
     private boolean CheckPackageRange(int i)
     {
         if(i > 0 && i <51)
+            return true;
+        else
+            return false;
+    }
+
+    private boolean CheckTicketsRange(int i)
+    {
+        if(i > -1 && i <6)
             return true;
         else
             return false;
@@ -72,6 +92,15 @@ public class Preferences {
             return;
         SharedPreferences.Editor editor = pPackage.edit();
         editor.putInt("PACKAGE", i);
+        editor.commit();
+    }
+
+    public void EditTickets(int i)
+    {
+        if (!CheckTicketsRange(i))
+            return;
+        SharedPreferences.Editor editor = pTickets.edit();
+        editor.putInt("TICKETS", i);
         editor.commit();
     }
     //endregion
