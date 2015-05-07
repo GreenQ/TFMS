@@ -71,7 +71,7 @@ public class Preferences {
         if (!CheckPackageRange(i))
             return;
         SharedPreferences.Editor editor = pPackage.edit();
-        editor.putInt("Package", i);
+        editor.putInt("PACKAGE", i);
         editor.commit();
     }
     //endregion

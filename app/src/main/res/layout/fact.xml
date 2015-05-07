@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ff000000"
-        android:alpha="0.9"></RelativeLayout>
+        android:alpha="0.9"
+        android:id="@+id/rootWinLayout"></RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

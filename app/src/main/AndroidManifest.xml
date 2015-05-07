@@ -57,6 +57,9 @@
         <activity android:name=".MarketActivity"
             android:theme="@style/Theme.AppCompat.Dialog"></activity>
 
+        <activity android:name=".PackageLockedActivity"
+            android:theme="@style/AppThemeDialog"></activity>
+
 
     </application>
 

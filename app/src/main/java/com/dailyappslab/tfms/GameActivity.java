@@ -295,10 +295,15 @@ public class GameActivity extends Activity {
 
         TextView txtIsCorrect = (TextView) popupView.findViewById(R.id.txtIsCorrect);
         TextView txtFact = (TextView) popupView.findViewById(R.id.txtFact);
-        if (isCorrect)
+        RelativeLayout rootWinLayout = (RelativeLayout) popupView.findViewById(R.id.rootWinLayout);
+        if (isCorrect) {
             txtIsCorrect.setText("Верно!");
-        else if (!isCorrect)
+            rootWinLayout.setBackgroundColor(getResources().getColor(R.color.win));
+        }
+        else if (!isCorrect) {
             txtIsCorrect.setText("Не верно!");
+            rootWinLayout.setBackgroundColor(getResources().getColor(R.color.lose));
+        }
         txtFact.setText(getResources().getString(getResources().getIdentifier("q" + Globals.CurrentLevel + "add", "string", getPackageName())));
 
         RelativeLayout btnDismiss = (RelativeLayout) popupView.findViewById(R.id.btnContinue);
@@ -309,7 +314,10 @@ public class GameActivity extends Activity {
                 if (Globals.CurrentLevel == Globals.CurrentPackage.MaxQuestion) {
                     //Globals.DisplayAlert(getBaseContext(), "Уровень пройден", "Грац");
                     Globals.CurrentPackage = Package.GetNextPackage(Globals.CurrentPackage, packages);
-                    preferences.EditPackage(Globals.CurrentPackage.Id);
+                    //preferences.EditPackage(Globals.CurrentPackage.Id);
+                    if(preferences.GetCurrentPackage() < Globals.CurrentPackage.Id)
+                        preferences.EditPackage(Globals.CurrentPackage.Id);
+
                     txtCurPackage.setText(String.valueOf(Globals.CurrentPackage.Id));
                     displayedLevel = 0;
                     ShowWinPopUp();

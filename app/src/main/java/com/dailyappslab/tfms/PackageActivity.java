@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by GreenQ on 05.05.2015.
@@ -28,6 +29,10 @@ public class PackageActivity extends ActionBarActivity {
 
         PackagesArrayAdapter adapter = new PackagesArrayAdapter(this,
                 R.layout.package_list_item, Globals.GetPackages());
+        final Preferences preferences = new Preferences(this);
+
+//        Toast.makeText(this, (String) String.valueOf(preferences.GetCurrentPackage()),
+//                Toast.LENGTH_LONG).show();
 
         lvMain.setAdapter(adapter);
         lvMain.setClickable(true);
@@ -35,8 +40,15 @@ public class PackageActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Globals.CurrentPackage = Package.GetPackage(((TextView) ((LinearLayout)view).findViewById(R.id.txtViewPackage)).getText().toString(), Globals.GetPackages());
-                Intent i = new Intent(PackageActivity.this, GameActivity.class);
-                startActivity(i);
+                if(Globals.CurrentPackage.Id <= preferences.GetCurrentPackage()) {
+                    Intent i = new Intent(PackageActivity.this, GameActivity.class);
+                    startActivity(i);
+                }
+                else {
+                    Intent i = new Intent(PackageActivity.this, PackageLockedActivity.class);
+                    startActivity(i);
+                }
+
             }
         });
 

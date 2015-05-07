@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by GreenQ on 05.05.2015.
@@ -16,12 +17,14 @@ public class PackagesArrayAdapter extends ArrayAdapter{
     private Context context;
     private int resource;
     private Package [] objects;
+    Preferences preferences;
 
     public PackagesArrayAdapter(Context context, int resource, Package[] objects) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
         this.objects = objects;
+        preferences = new Preferences(context);
     }
 
     @Override
@@ -34,10 +37,26 @@ public class PackagesArrayAdapter extends ArrayAdapter{
 
         try {
 
+
+
+            //if(objects[position].Id > preferences.GetCurrentPackage())
+
+            //row.setBackgroundColor(context.getResources().getColor(R.color.yellow1_item));
+
             TextView txtPackage = (TextView)
                     row.findViewById(R.id.txtViewPackage);
             txtPackage.setText(
                     objects[position].Name.toString());
+
+            if(objects[position].Id < preferences.GetCurrentPackage()) {
+                //green color
+                txtPackage.setBackgroundResource(R.drawable.paki_g);
+
+            }
+            else if(objects[position].Id == preferences.GetCurrentPackage()) {
+                txtPackage.setBackgroundResource(R.drawable.paki_y);
+                //yellow color
+            }
             return row;
         }
         catch(Exception ex)
