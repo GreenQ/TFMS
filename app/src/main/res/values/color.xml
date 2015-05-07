@@ -7,5 +7,8 @@
     <color name="green2_item">#48c073</color>
 
 
-    ff48c073
+    <color name="win">#ff0f2212</color>
+    <color name="lose">#ff360f0b</color>
+
+
 </resources>

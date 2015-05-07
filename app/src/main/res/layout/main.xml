@@ -57,25 +57,7 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="60dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:background="@drawable/coni"
-                android:layout_marginLeft="3dp"
-                android:id="@+id/goBackFromPopup">
 
-                <ImageButton
-                    android:layout_width="30dp"
-                    android:layout_height="12dp"
-                    android:id="@+id/btnGoBackFromPopup"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="10dp"
-                    android:alpha="0.7"
-                    android:background="@drawable/arr"/>
-
-            </RelativeLayout>
 
 
 
