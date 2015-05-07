@@ -55,7 +55,7 @@
         </activity>
 
         <activity android:name=".MarketActivity"
-            android:theme="@style/Base.Theme.AppCompat.Dialog"></activity>
+            android:theme="@style/Theme.AppCompat.Dialog"></activity>
     </application>
 
 </manifest>
