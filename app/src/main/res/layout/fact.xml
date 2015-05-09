@@ -29,7 +29,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:textColor="#ffffffff"
                 android:textSize="30sp"
                 android:background="#00FFFFFF"
@@ -57,7 +57,7 @@
                 android:textColor="#fff5f5f5"
                 android:textSize="20sp"
                 android:gravity="center"
-                android:text="Тут якийсь факт"
+                android:text="Самая знаменитая цитата из фильма «Звёздные войны» — «Да пребудет с тобой Сила» — по-английски звучит как «May the Force be with you». Это можно понять как «May the 4th be with you» («4 мая с тобой»). Поэтому день «Звёздных войн» 4 мая."
                 android:id="@+id/txtFact"/>
 
         </RelativeLayout>

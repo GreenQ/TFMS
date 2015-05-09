@@ -84,7 +84,7 @@
 
 
             <RelativeLayout
-                android:layout_width="65dp"
+                android:layout_width="75dp"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
@@ -129,11 +129,12 @@
     <ListView
         android:cacheColorHint="@android:color/transparent"
         android:scrollbars="none"
-
+        android:overScrollMode="never"
+        android:listSelector="@android:color/transparent"
         android:id="@+id/lvMain"
-        android:paddingTop="30dp"
-        android:layout_marginTop="35dp"
+        android:layout_below="@+id/crt"
         android:layout_gravity="center"
+        android:background="#00ffffff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@android:color/transparent"

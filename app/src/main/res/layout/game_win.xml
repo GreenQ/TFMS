@@ -23,7 +23,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:textColor="#fffdfbff"
                 android:textSize="30sp"
                 android:background="#00FFFFFF"
@@ -61,18 +61,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="15"
+                    android:text="5"
+                    android:id="@+id/wincoins"
                     android:background="#00FFFFFF"
                     android:textColor="#FFFFFF"
                     android:textSize="50sp"
                     android:layout_centerVertical="true" />
 
                 <ImageView
+                    android:layout_toRightOf="@+id/wincoins"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/coins"
                     android:id="@+id/imageView5"
-                    android:layout_alignParentRight="true"
                     android:layout_marginRight="5dp"
                     android:layout_centerVertical="true"/>
 
