@@ -12,6 +12,7 @@ public class Globals {
     public static int CurrentLevel;
     public static int CurrentGold;
     public static boolean IsCorrect;
+    public static long TimeLeft;
 
     public static Package[] GetPackages()
     {
@@ -68,6 +69,11 @@ public class Globals {
         packages[48] = new Package(49, "Уровень 49", 481, 490);
         packages[49] = new Package(50, "Уровень 50", 491, 500);
         return packages;
+    }
+
+    public static void GetTimedTickets(int ticketsAmount)
+    {
+
     }
 
     public static void DisplayAlert(Context context, String string, String title)

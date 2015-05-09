@@ -58,12 +58,12 @@ public class PackagesArrayAdapter extends ArrayAdapter{
                 txtPackage.setBackgroundResource(R.drawable.paki_y);
                 //yellow color
             }
-            if(position == 0) {
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 80);
-                params.setMargins(5, 12, 5, 2);
-                //params.setMarginStart(12);
-                row.setLayoutParams(params);
-            }
+//            if(position == 0) {
+//                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 80);
+//                params.setMargins(5, 12, 5, 2);
+//                //params.setMarginStart(12);
+//                row.setLayoutParams(params);
+//            }
             return row;
         }
         catch(Exception ex)
