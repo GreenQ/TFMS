@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,8 +17,9 @@ import android.widget.Toast;
  * Created by GreenQ on 05.05.2015.
  */
 public class MainActivity extends ActionBarActivity {
+  //обявлення анімації
+    private AnimationDrawable mAnimationDrawable;
 
-    AnimationDrawable animation;
     ImageButton btnPlay;
     TextView txtTickets;
     TextView txtGold;
@@ -40,8 +42,7 @@ public class MainActivity extends ActionBarActivity {
         txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
 
         txtGold = (TextView) findViewById(R.id.txtGold);
-        animation = (AnimationDrawable) btnPlay.getBackground();
-        animation.setOneShot(true);
+
 
 
         GetTicketsDueTime();
@@ -49,11 +50,24 @@ public class MainActivity extends ActionBarActivity {
 
     public void StartGame(View view)
     {
-        animation.start();
-        animation.stop();
+
+        //початок анімації
+        ImageView imageView = (ImageView) findViewById(R.id.btnPlay);
+        imageView.setBackgroundResource(R.drawable.btnanim);
+
+        mAnimationDrawable = (AnimationDrawable) imageView.getBackground();
+
+        mAnimationDrawable.start();
+        mAnimationDrawable.run();
+
+
+
+        //кінець анімації
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+
                 Intent i = new Intent(MainActivity.this, PackageActivity.class);
                 startActivity(i);
 
