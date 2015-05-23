@@ -31,7 +31,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Подтвердите покупку"
+                android:text="Уровень недоступен"
                 android:textSize="17sp"
                 android:background="#00FFFFFF"
                 android:textColor="#ffffff"
@@ -42,41 +42,32 @@
 
         </RelativeLayout>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="Закрыть"
+            android:textColor="#FFFFFFFF"
+            android:id="@+id/btnClose"
+            android:textSize="12sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/shadow2"/>
+
+
 
         <TextView
-            android:paddingRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Уровень недоступен. Пройдите предыдущие чтобы его открыть."
             android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/relativeLayout"
+            android:background="#00FFFFFF"
+            android:textColor="#ffffffff"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"
             android:gravity="center"
-            android:layout_marginTop="15dp"
-            android:textSize="18sp"
-            android:textColor="#fff7f7f7"
-            android:text="Вы действительно хотите купить билет?"
-            android:id="@+id/txtTicketMessage"/>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="15dp">
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:background="@drawable/confirm"
-                android:id="@+id/imgVConfirm"/>
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginLeft="100dp"
-                android:background="@drawable/cancel"
-                android:id="@+id/imgVCancel"/>
-
-        </RelativeLayout>
+            android:id="@+id/textViewDay"
+            />
 
 
 

@@ -31,8 +31,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Подтвердите покупку"
-                android:textSize="17sp"
+                android:text="Вы уверены?"
+                android:textSize="24sp"
                 android:background="#00FFFFFF"
                 android:textColor="#ffffff"
                 android:layout_centerHorizontal="true"
@@ -53,8 +53,7 @@
             android:layout_marginTop="15dp"
             android:textSize="18sp"
             android:textColor="#fff7f7f7"
-            android:text="Вы действительно хотите купить билет?"
-            android:id="@+id/txtTicketMessage"/>
+            android:text="Потраченный билет не будет возвращен"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"

@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
     android:background="@drawable/game">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:id="@+id/crt"
         android:background="@drawable/top_panel"
-        android:id="@+id/crt">
+        android:layout_marginBottom="0dp"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -36,9 +40,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="#00FFFFFF"
                     android:text="100"
                     android:alpha="0.7"
-                    android:id="@+id/textViewGold"
+                    android:id="@+id/txtGold"
                     android:layout_centerVertical="true"
                     android:textSize="18sp"
                     android:layout_marginRight="5dp"
@@ -79,6 +84,38 @@
 
 
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/coni"
+                android:id="@+id/cifra">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtTickets"
+                    android:text="0/5"
+                    android:background="#00FFFFFF"
+                    android:layout_marginLeft="5dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="#ffffffff"
+                    android:textSize="18sp"
+                    android:alpha="0.7"
+                    android:onClick="StartTicketsShop"/>
+
+                <ImageView
+                    android:layout_toRightOf="@+id/txtTickets"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:onClick="StartTicketsShop"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/bilet"/>
+
+            </RelativeLayout>
 
 
 
@@ -91,29 +128,19 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <ListView
+        android:cacheColorHint="@android:color/transparent"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:listSelector="@android:color/transparent"
+        android:id="@+id/lvMain"
+        android:layout_below="@+id/crt"
+        android:layout_gravity="center"
+        android:background="#00ffffff"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Обращение к пользователям"
-        android:id="@+id/textView"
-        android:textColor="#ffffff"
-        android:layout_marginTop="2dp"
-        android:background="#00FFFFFF"
-        android:gravity="center"
-        android:textSize="25dp"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:layout_margin="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:textSize="20sp"
-        android:background="#00FFFFFF"
-        android:textColor="#FFFFFF"
-        android:autoLink="email"
-        android:textColorLink="#ff0010b6"
-        android:text="      Команда разработчиков DailyAppsLab благодарит вас за установку игры. С любыми пожеланиями или предложениями вы можете обратиться к нам по электронному адресу dailyappslab@gmail.com \n     Если вам понравилась игра - пожалуйста, поддержите нас отзывами и оценками! \n    Желаем удачи и приятного времяпровождения!"
-        android:textStyle="italic"/>
-
-
-</LinearLayout>
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp">
+    </ListView>
+</RelativeLayout>
