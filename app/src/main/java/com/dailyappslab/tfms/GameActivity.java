@@ -4,24 +4,17 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 
 public class GameActivity extends Activity {
@@ -30,6 +23,7 @@ public class GameActivity extends Activity {
     TextView txtQuestion;
     TextView txtCurLvl;
     TextView txtCurPackage;
+    public static TextView txtGold;
     Level level;
     Preferences preferences;
     Package[] packages;
@@ -66,6 +60,9 @@ public class GameActivity extends Activity {
 
             txtQuestion = (TextView) findViewById(R.id.txtQuestion);
             txtQuestion.setText(level.Fact);
+
+            txtGold = (TextView) findViewById(R.id.txtGold);
+            txtGold.setText(String.valueOf(preferences.GetCurrentGold()));
 
             txtCurLvl = (TextView) findViewById(R.id.txtCurLvl);
             txtCurLvl.setText(String.valueOf(displayedLevel) + "/10");
@@ -172,6 +169,12 @@ public class GameActivity extends Activity {
     {
         super.finish();
     }
+
+    public void StartGameShop(View view)
+    {
+        Intent i = new Intent(GameActivity.this, MarketActivity.class);
+        startActivity(i);
+    }
     //endregion
 
     //region #SUPPLEMENT
@@ -223,6 +226,16 @@ public class GameActivity extends Activity {
         rltvContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                preferences.EditGold(preferences.GetCurrentGold()+5);
+                txtGold.setText(String.valueOf(preferences.GetCurrentGold()));
+
+                if (preferences.GetCurrentTickets() == 0 && Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
+                    Intent i = new Intent(GameActivity.this, TicketBuyActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+                else
+                preferences.EditTickets(preferences.GetCurrentTickets()-1);
                 popupWindowWin.dismiss();
             }
         });
@@ -256,9 +269,18 @@ public class GameActivity extends Activity {
         restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                if (preferences.GetCurrentTickets() == 0 && Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
+                    Intent i = new Intent(GameActivity.this, TicketBuyActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+                else {
+                    preferences.EditTickets(preferences.GetCurrentTickets() - 1);
+                    popupWindowWin.dismiss();
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
+                }
             }
         });
 
@@ -317,6 +339,7 @@ public class GameActivity extends Activity {
                     //preferences.EditPackage(Globals.CurrentPackage.Id);
                     if(preferences.GetCurrentPackage() < Globals.CurrentPackage.Id)
                         preferences.EditPackage(Globals.CurrentPackage.Id);
+
 
                     txtCurPackage.setText(String.valueOf(Globals.CurrentPackage.Id));
                     displayedLevel = 0;

@@ -6,12 +6,19 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.startad.lib.SADView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by GreenQ on 05.05.2015.
@@ -21,11 +28,12 @@ public class MainActivity extends ActionBarActivity {
     private AnimationDrawable mAnimationDrawable;
 
     ImageButton btnPlay;
-    TextView txtTickets;
-    TextView txtGold;
-    Preferences preferences;
-    CountDownTimer globalTimer;
-    long timeLeft;
+    public static TextView txtTickets;
+    public static TextView txtGold;
+    static Preferences preferences;
+    public static CountDownTimer globalTimer;
+    static long timeLeft;
+    SADView sadView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,10 +50,26 @@ public class MainActivity extends ActionBarActivity {
         txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
 
         txtGold = (TextView) findViewById(R.id.txtGold);
+        txtGold.setText(String.valueOf(preferences.GetCurrentGold()));
 
 
 
+        //GetTicketsDueTime();
+        //Globals.preferences = preferences;
         GetTicketsDueTime();
+
+        try
+        {
+            sadView = new SADView(this, "555f43a15b7f5a2100000000");
+            LinearLayout layout = (LinearLayout)findViewById(R.id.admob);
+
+            // Add the adView to it
+            layout.addView(this.sadView);
+            sadView.loadAd(SADView.LANGUAGE_RU);
+        }
+        catch (Exception ex) {
+            Globals.DisplayAlert(this, ex.getMessage(), "Error occured");
+        }
     }
 
     public void StartGame(View view)
@@ -83,7 +107,13 @@ public class MainActivity extends ActionBarActivity {
         startActivity(i);
     }
 
-    public void CountTime(String instruction)
+    public void StartTicketShop(View view)
+    {
+        Intent i = new Intent(MainActivity.this, TicketBuyActivity.class);
+        startActivity(i);
+    }
+
+    public static void CountTime(String instruction)
     {
         //txtTime = (TextView) findViewById( R.id.txtTime );
         switch (instruction) {
@@ -91,24 +121,35 @@ public class MainActivity extends ActionBarActivity {
                 globalTimer = new CountDownTimer(420000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
-                        Globals.TimeLeft = millisUntilFinished;
-
-                        //txtTime.setText(new SimpleDateFormat("mm:ss").format(new Date( millisUntilFinished)));
-                        // if(((millisUntilFinished) % 420000) < 1000)
+                        // txtTime.setText(new SimpleDateFormat("mm:ss").format(new Date( millisUntilFinished)));
+                        // if(((millisUntilFinished) % 15000) < 1000)
                         //{
 //                    preferences.EditTickets(preferences.GetCurrentTickets() + 1);
 //                    txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
                         // FixTicketsAmount();
                         //}
+                        try {
+                            if(TicketBuyActivity.txtTime !=null)
+                                TicketBuyActivity.txtTime.setText(new SimpleDateFormat("mm:ss").format(new Date(millisUntilFinished)));
+                        }
+                        catch (Exception ex){}
                         timeLeft = millisUntilFinished;
                     }
 
                     public void onFinish() {
-                        if (preferences.GetCurrentTickets() < 5) {
-                            preferences.EditTickets(preferences.GetCurrentTickets() + 1);
-                            txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                        if (preferences.GetCurrentTickets() < 6) {
+                            preferences.EditTickets(preferences.GetCurrentTickets() + 1);try {
+                                MainActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                                PackageActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                                TicketBuyActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets() + "/5"));
+                                TicketBuyActivity.txtTime.setText("");
+                            }
+                            catch (Exception ex){
+                                Log.d("TimerError: ", ex.getMessage());}
                             if (preferences.GetCurrentTickets() < 5)
                                 CountTime("continue");
+                            else
+                                globalTimer = null;
                             //txtTime.setText("");
                         }
                     }
@@ -124,25 +165,38 @@ public class MainActivity extends ActionBarActivity {
 
                     public void onTick(long millisUntilFinished) {
                         //txtTime.setText(new SimpleDateFormat("mm:ss").format(new Date( millisUntilFinished)));
-                        Globals.TimeLeft = millisUntilFinished;
-
-                        if(((millisUntilFinished) % 420000) < 1000)
-                        {
-                            preferences.EditTickets(preferences.GetCurrentTickets() + 1);
-                            txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
-                            // FixTicketsAmount();
-                            //}
-                            timeLeft = millisUntilFinished;
+//                        if(((millisUntilFinished) % 15000) < 1000)
+//                        {
+//                            preferences.EditTickets(preferences.GetCurrentTickets() + 1);
+//                            txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+//                            // FixTicketsAmount();
+//                            //}
+                        try {
+                            if(TicketBuyActivity.txtTime !=null)
+                                TicketBuyActivity.txtTime.setText(new SimpleDateFormat("mm:ss").format(new Date(millisUntilFinished)));
                         }
+                        catch (Exception ex){}
+                        timeLeft = millisUntilFinished;
+//                        }
                     }
 
                     public void onFinish() {
-                        if(preferences.GetCurrentTickets() < 5)
+                        if(preferences.GetCurrentTickets() < 6)
                         {
                             preferences.EditTickets(preferences.GetCurrentTickets() + 1);
-                            txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                            try {
+                                MainActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                                PackageActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                                TicketBuyActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets() + "/5"));
+                                TicketBuyActivity.txtTime.setText("");
+                            }
+                            catch (Exception ex){
+                                Log.d("TimerError: ", ex.getMessage());
+                            }
                             if (preferences.GetCurrentTickets() < 5)
                                 CountTime("continue");
+                            else
+                                globalTimer = null;
                             //txtTime.setText("");
                         }
                     }
@@ -151,9 +205,9 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    public void GetTicketsDueTime()
+    public static void GetTicketsDueTime()
     {
-        long lastTicketUsage = preferences.GetTicketUsageTime();
+        long lastTicketUsage = preferences.GetLastTicketUsageTime();
         long currentTime = System.currentTimeMillis();
 
         long differenceTime = currentTime - lastTicketUsage;
@@ -165,21 +219,23 @@ public class MainActivity extends ActionBarActivity {
         int possibleTickets = (int) (moduledTime/420000);
 
 
-        int temp = preferences.GetCurrentTickets() + possibleTickets;
-        Toast.makeText(getBaseContext(), String.valueOf(temp), Toast.LENGTH_SHORT).show();
+        int temp = preferences.GetTicketsAtLastUsage() + possibleTickets;
+        //Toast.makeText(getBaseContext(), String.valueOf(temp), Toast.LENGTH_SHORT).show();
 
         if(temp < 5)
         {
             preferences.EditTickets(temp);
-            txtTickets.setText(String.valueOf(temp) + "/5");
+            //txtTickets.setText(String.valueOf(temp));
 
-            globalTimer = new CountDownTimer(restTime, 1000) {
+            globalTimer = new CountDownTimer((420000-restTime), 1000) {
 
                 public void onTick(long millisUntilFinished) {
-                    Globals.TimeLeft = millisUntilFinished;
-
-                    //txtTime.setText(new SimpleDateFormat("mm:ss").format(new Date( millisUntilFinished)));
-                    // if(((millisUntilFinished) % 420000) < 1000)
+                    try {
+                        if(TicketBuyActivity.txtTime !=null)
+                        TicketBuyActivity.txtTime.setText(new SimpleDateFormat("mm:ss").format(new Date(millisUntilFinished)));
+                    }
+                    catch (Exception ex){}
+                    // if(((millisUntilFinished) % 15000) < 1000)
                     //{
 //                    preferences.EditTickets(preferences.GetCurrentTickets() + 1);
 //                    txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
@@ -190,8 +246,13 @@ public class MainActivity extends ActionBarActivity {
 
                 public void onFinish() {
                     if (preferences.GetCurrentTickets() < 6) {
-                        preferences.EditTickets(preferences.GetCurrentTickets() + 1);
-                        txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                        preferences.EditTickets(preferences.GetCurrentTickets() + 1);try {
+                            MainActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                            PackageActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                            TicketBuyActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets() + "/5"));
+                            TicketBuyActivity.txtTime.setText("");
+                        }
+                        catch (Exception ex){}
                         if (preferences.GetCurrentTickets() < 5)
                             CountTime("continue");
                         //txtTime.setText("");
@@ -201,17 +262,55 @@ public class MainActivity extends ActionBarActivity {
         }
         else {
             preferences.EditTickets(5);
-            txtTickets.setText(String.valueOf(5) + "/5");
+            try {
+                MainActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                PackageActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                TicketBuyActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets() + "/5"));
+                TicketBuyActivity.txtTime.setText("");
+            }
+            catch (Exception ex){
+                Log.d("TimerError: ", ex.getMessage());}
         }
     }
 
-    @Override
+
     protected void onResume()
     {
         super.onResume();
+        //GetDelayedTickets();
         txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+
     }
 
+    public void GetDelayedTickets()
+    {
+        long lastTicketUsage = preferences.GetTicketUsageTime();
+        long currentTime = System.currentTimeMillis();
+
+        long differenceTime = currentTime - lastTicketUsage;
+
+        long restTime = differenceTime % 30000;
+
+        long moduledTime = differenceTime - restTime;
+
+        int possibleTickets = (int) (moduledTime/30000);
+
+
+        int temp = preferences.GetCurrentTickets() + possibleTickets;
+        Toast.makeText(getBaseContext(), String.valueOf(temp), Toast.LENGTH_SHORT).show();
+
+        if(temp < 5)
+        {
+            preferences.EditTickets(temp);
+            txtTickets.setText(String.valueOf(temp) + "/5");
+
+        }
+
+        else {
+            preferences.EditTickets(5);
+            txtTickets.setText(String.valueOf(5) + "/5");
+        }
+    }
 
     @Override
     public void onBackPressed() {

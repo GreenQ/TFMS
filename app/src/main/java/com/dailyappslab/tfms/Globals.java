@@ -3,16 +3,24 @@ package com.dailyappslab.tfms;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.CountDownTimer;
+import android.util.Log;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by GreenQ on 05.05.2015.
  */
 public class Globals {
     public static Package CurrentPackage;
+    public static Preferences preferences;
     public static int CurrentLevel;
     public static int CurrentGold;
     public static boolean IsCorrect;
-    public static long TimeLeft;
+    public static long timeLeft;
+    public static CountDownTimer globalTimer;
 
     public static Package[] GetPackages()
     {
@@ -71,9 +79,139 @@ public class Globals {
         return packages;
     }
 
-    public static void GetTimedTickets(int ticketsAmount)
-    {
 
+    public static void CountTime(String instruction)
+    {
+        //txtTime = (TextView) findViewById( R.id.txtTime );
+        switch (instruction) {
+            case "new":
+                globalTimer = new CountDownTimer(15000, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                       // txtTime.setText(new SimpleDateFormat("mm:ss").format(new Date( millisUntilFinished)));
+                        // if(((millisUntilFinished) % 15000) < 1000)
+                        //{
+//                    preferences.EditTickets(preferences.GetCurrentTickets() + 1);
+//                    txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                        // FixTicketsAmount();
+                        //}
+                        timeLeft = millisUntilFinished;
+                    }
+
+                    public void onFinish() {
+                        if (preferences.GetCurrentTickets() < 6) {
+                            preferences.EditTickets(preferences.GetCurrentTickets() + 1);try {
+                                MainActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                                PackageActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                            }
+                            catch (Exception ex){
+                                Log.d("TimerError: ", ex.getMessage());}
+                            if (preferences.GetCurrentTickets() < 5)
+                                CountTime("continue");
+                            //txtTime.setText("");
+                        }
+                    }
+                }.start();
+                break;
+            case "continue":
+                try {
+                    globalTimer.cancel();
+                }
+                catch(Exception ex)
+                {}
+                globalTimer = new CountDownTimer(15000, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                        //txtTime.setText(new SimpleDateFormat("mm:ss").format(new Date( millisUntilFinished)));
+//                        if(((millisUntilFinished) % 15000) < 1000)
+//                        {
+//                            preferences.EditTickets(preferences.GetCurrentTickets() + 1);
+//                            txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+//                            // FixTicketsAmount();
+//                            //}
+                        timeLeft = millisUntilFinished;
+//                        }
+                    }
+
+                    public void onFinish() {
+                        if(preferences.GetCurrentTickets() < 6)
+                        {
+                            preferences.EditTickets(preferences.GetCurrentTickets() + 1);
+                            try {
+                            MainActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                            PackageActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                        }
+                        catch (Exception ex){
+                            Log.d("TimerError: ", ex.getMessage());
+                        }
+                            if (preferences.GetCurrentTickets() < 5)
+                                CountTime("continue");
+                            //txtTime.setText("");
+                        }
+                    }
+                }.start();
+                break;
+        }
+    }
+
+    public static void GetTicketsDueTime()
+    {
+        long lastTicketUsage = preferences.GetLastTicketUsageTime();
+        long currentTime = System.currentTimeMillis();
+
+        long differenceTime = currentTime - lastTicketUsage;
+
+        long restTime = differenceTime % 15000;
+
+        long moduledTime = differenceTime - restTime;
+
+        int possibleTickets = (int) (moduledTime/15000);
+
+
+        int temp = preferences.GetTicketsAtLastUsage() + possibleTickets;
+        //Toast.makeText(getBaseContext(), String.valueOf(temp), Toast.LENGTH_SHORT).show();
+
+        if(temp < 5)
+        {
+            preferences.EditTickets(temp);
+            //txtTickets.setText(String.valueOf(temp));
+
+            globalTimer = new CountDownTimer((15000-restTime), 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    //txtTime.setText(new SimpleDateFormat("mm:ss").format(new Date( millisUntilFinished)));
+                    // if(((millisUntilFinished) % 15000) < 1000)
+                    //{
+//                    preferences.EditTickets(preferences.GetCurrentTickets() + 1);
+//                    txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                    // FixTicketsAmount();
+                    //}
+                    timeLeft = millisUntilFinished;
+                }
+
+                public void onFinish() {
+                    if (preferences.GetCurrentTickets() < 6) {
+                        preferences.EditTickets(preferences.GetCurrentTickets() + 1);try {
+                            MainActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                            PackageActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                        }
+                        catch (Exception ex){}
+                        if (preferences.GetCurrentTickets() < 5)
+                            CountTime("continue");
+                        //txtTime.setText("");
+                    }
+                }
+            }.start();
+        }
+        else {
+            preferences.EditTickets(5);
+            try {
+                MainActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+                PackageActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
+            }
+            catch (Exception ex){
+                Log.d("TimerError: ", ex.getMessage());}
+        }
     }
 
     public static void DisplayAlert(Context context, String string, String title)
