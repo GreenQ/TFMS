@@ -8,7 +8,6 @@
     <meta-data android:name="trackingId" android:value="yourid" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="com.android.vending.BILLING"/>
 
     <supports-screens>
         android:smallScreen=["true"]
@@ -79,4 +78,8 @@
 
     </application>
 
+    <uses-permission
+        android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>

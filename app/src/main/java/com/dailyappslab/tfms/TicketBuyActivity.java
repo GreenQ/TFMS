@@ -86,7 +86,7 @@ public class TicketBuyActivity extends Activity {
 
             }
         });
-
+//
         txtTickets  = (TextView) findViewById(R.id.txtTickets);
         txtTime = (TextView) findViewById(R.id.txtTime);
         txtTime.setText("");
