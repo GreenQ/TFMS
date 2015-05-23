@@ -2,6 +2,7 @@ package com.dailyappslab.tfms;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -34,6 +35,17 @@ public class TicketBuyActivity extends Activity {
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ticket_market);
+
+        String fontPath = "fonts/Paint Peel Initials.ttf";
+
+        TextView text = (TextView) findViewById(R.id.txtQuestion);
+
+        // Font Face
+        Typeface typeface = Typeface.createFromAsset(getAssets(), fontPath);
+
+        // Applying font
+        text.setTypeface(typeface);
+        
         preferences = new Preferences(this);
         btnClose = (Button) findViewById(R.id.btnClose);
 

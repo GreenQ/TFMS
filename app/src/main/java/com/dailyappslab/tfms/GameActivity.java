@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -50,6 +51,16 @@ public class GameActivity extends Activity {
             super.onCreate(savedInstanceState);
             //requestWindowFeature(Window.FEATURE_NO_TITLE);
             setContentView(R.layout.game);
+
+            String fontPath = "fonts/Paint Peel Initials.ttf";
+
+            TextView text = (TextView) findViewById(R.id.txtQuestion);
+
+            // Font Face
+            Typeface typeface = Typeface.createFromAsset(getAssets(), fontPath);
+
+            // Applying font
+            text.setTypeface(typeface);
 
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);

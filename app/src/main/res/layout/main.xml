@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:id="@+id/crt"
         android:background="@drawable/top_panel">
 
@@ -68,8 +68,7 @@
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/coni"
-                android:id="@+id/cifra"
-                android:onClick="StartTicketShop">
+                android:id="@+id/cifra">
 
                 <TextView
                     android:layout_width="wrap_content"
