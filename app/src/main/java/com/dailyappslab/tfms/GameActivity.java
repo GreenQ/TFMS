@@ -24,9 +24,15 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.startad.lib.SADView;
+
 
 public class GameActivity extends Activity {
-
+//
     //region #DECLARATION
     TextView txtQuestion;
     TextView txtCurLvl;
@@ -38,6 +44,7 @@ public class GameActivity extends Activity {
     int oscarsAmount;
     ImageView hp1;
     ImageView hp2;
+    InterstitialAd interstitial;
 
     //endregion
 
@@ -85,6 +92,23 @@ public class GameActivity extends Activity {
             txtCurPackage.setText(String.valueOf(Globals.CurrentPackage.Id));
 
             oscarsAmount = 2;
+
+            AdView adView = (AdView)this.findViewById(R.id.adView);
+            try
+            {
+                adView.setAdSize(AdSize.SMART_BANNER);
+                adView.setAdUnitId("ca-app-pub-3376890691318599/5322587261");
+                AdRequest adRequest = new AdRequest.Builder().build();
+//
+
+                adView.loadAd(adRequest);
+
+                //ShowRateUs();
+            }
+            catch (Exception ex)
+            {
+               Globals.DisplayAlert(this, ex.getMessage(), "Error occured");
+            }
         }
         catch (Exception ex)
         {
@@ -219,6 +243,12 @@ public class GameActivity extends Activity {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
         try {
+//            interstitial = new InterstitialAd(this);
+//            interstitial.setAdUnitId("ca-app-pub-3376890691318599/6799320461");
+//            AdRequest adRequesti = new AdRequest.Builder().build();
+//            interstitial.loadAd(adRequesti);
+//
+//            interstitial.show();
             //sadView = new SADView(this, "5536149602e39f1f00000000");
             //LinearLayout adLayout = (LinearLayout) popupView.findViewById(R.id.admob);
 
