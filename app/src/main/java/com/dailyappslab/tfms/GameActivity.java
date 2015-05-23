@@ -354,6 +354,7 @@ public class GameActivity extends Activity {
             //sadView.loadAd(SADView.LANGUAGE_EN);
         } catch (Exception ex) {
         }
+        //lol
 
         RelativeLayout restart = (RelativeLayout) popupView.findViewById(R.id.rltvRestart);
         RelativeLayout quit = (RelativeLayout) popupView.findViewById(R.id.rltvQuit);
