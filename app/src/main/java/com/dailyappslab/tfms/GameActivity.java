@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -299,14 +300,14 @@ public class GameActivity extends Activity {
         try {
             if(interstitial.isLoaded())
                 interstitial.show();
-            //sadView = new SADView(this, "5536149602e39f1f00000000");
-            //LinearLayout adLayout = (LinearLayout) popupView.findViewById(R.id.admob);
-
-            // Add the adView to it
-            //adLayout.addView(this.sadView);
-            //sadView.loadAd(SADView.LANGUAGE_EN);
-        } catch (Exception ex) {
+            SADView sadView;
+            sadView = new SADView(this, "555f43a15b7f5a2100000000");
+            LinearLayout layout = (LinearLayout) popupView.findViewById(R.id.admob);
+            layout.addView(sadView);
+            sadView.loadAd(SADView.LANGUAGE_RU);
         }
+        catch (Exception ex)
+        {}
 
         RelativeLayout rltvContinue = (RelativeLayout) popupView.findViewById(R.id.rltvContinue);
 
@@ -357,14 +358,16 @@ public class GameActivity extends Activity {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
         try {
-            //sadView = new SADView(this, "5536149602e39f1f00000000");
-            //LinearLayout adLayout = (LinearLayout) popupView.findViewById(R.id.admob);
-
-            // Add the adView to it
-            //adLayout.addView(this.sadView);
-            //sadView.loadAd(SADView.LANGUAGE_EN);
-        } catch (Exception ex) {
+            if(interstitial.isLoaded())
+                interstitial.show();
+            SADView sadView;
+            sadView = new SADView(this, "555f43a15b7f5a2100000000");
+            LinearLayout layout = (LinearLayout) popupView.findViewById(R.id.admob);
+            layout.addView(sadView);
+            sadView.loadAd(SADView.LANGUAGE_RU);
         }
+        catch (Exception ex)
+        {}
 
         RelativeLayout restart = (RelativeLayout) popupView.findViewById(R.id.rltvRestart);
         RelativeLayout quit = (RelativeLayout) popupView.findViewById(R.id.rltvQuit);
