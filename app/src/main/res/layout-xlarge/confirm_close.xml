@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="210dp"
-    android:layout_height="170dp"
+    android:orientation="vertical" android:layout_width="380dp"
+    android:layout_height="280dp"
     android:theme="@style/Theme.AppCompat.Dialog">
 
     <RelativeLayout
@@ -11,8 +11,8 @@
         android:alpha="0"></RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="250dp"
-        android:layout_height="170dp"
+        android:layout_width="380dp"
+        android:layout_height="280dp"
         android:background="@drawable/bestbuy"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
@@ -22,7 +22,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:background="@drawable/shadow"
             android:id="@+id/relativeLayout">
 
@@ -31,8 +31,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Уровень недоступен"
-                android:textSize="19sp"
+                android:text="Вы уверены?"
+                android:textSize="36sp"
                 android:background="#00FFFFFF"
                 android:textColor="#ffffff"
                 android:layout_centerHorizontal="true"
@@ -42,32 +42,41 @@
 
         </RelativeLayout>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:text="Закрыть"
-            android:textColor="#FFFFFFFF"
-            android:id="@+id/btnClose"
-            android:textSize="12sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/shadow2"/>
-
-
 
         <TextView
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Пройдите предыдущие чтобы его открыть."
-            android:layout_marginLeft="5dp"
-            android:background="#00FFFFFF"
-            android:textColor="#ffffffff"
-            android:textSize="17sp"
-            android:layout_centerInParent="true"
+            android:layout_below="@+id/relativeLayout"
             android:gravity="center"
-            android:id="@+id/textViewDay"
-            />
+            android:layout_marginTop="15dp"
+            android:textSize="28sp"
+            android:textColor="#fff7f7f7"
+            android:text="Потраченный билет не будет возвращен"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/confirm"
+                android:id="@+id/imgVConfirm"/>
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="150dp"
+                android:background="@drawable/cancel"
+                android:id="@+id/imgVCancel"/>
+
+        </RelativeLayout>
 
 
 

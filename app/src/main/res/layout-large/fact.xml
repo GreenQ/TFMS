@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.AppCompat.Dialog">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ff000000"
+        android:alpha="0.9"
+        android:id="@+id/rootWinLayout"></RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+            <RelativeLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/verno"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffffff"
+                    android:textSize="45sp"
+                    android:background="#00FFFFFF"
+                    android:text="Верно"
+                    android:id="@+id/txtIsCorrect"/>
+
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/fac"
+                android:layout_below="@+id/verno"
+                android:gravity="center_horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff5f5f5"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="26sp"
+                    android:gravity="center"
+                    android:text="Самая знаменитая цитата из фильма «Звёздные войны» — «Да пребудет с тобой Сила» — по-английски звучит как «May the Force be with you». Это можно понять как «May the 4th be with you» («4 мая с тобой»). Поэтому день «Звёздных войн» 4 мая."
+                    android:id="@+id/txtFact"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/fac"
+                android:id="@+id/btnContinue"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/nextlvl"
+                android:layout_centerHorizontal="true"
+                android:gravity="center">
+
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

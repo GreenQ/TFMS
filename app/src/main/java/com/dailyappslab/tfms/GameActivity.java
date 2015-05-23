@@ -53,15 +53,7 @@ public class GameActivity extends Activity {
             //requestWindowFeature(Window.FEATURE_NO_TITLE);
             setContentView(R.layout.game);
 
-            String fontPath = "fonts/Paint Peel Initials.ttf";
 
-            TextView text = (TextView) findViewById(R.id.txtQuestion);
-
-            // Font Face
-            Typeface typeface = Typeface.createFromAsset(getAssets(), fontPath);
-
-            // Applying font
-            text.setTypeface(typeface);
 
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);

@@ -22,8 +22,7 @@ public class AboutUsActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         Preferences preferences = new Preferences(this);
-        txtGold.findViewById(R.id.txtGold);
-        txtGold.setText(String.valueOf(preferences.GetCurrentGold()));
+
     }
 
     public void StartGameshop(View view)

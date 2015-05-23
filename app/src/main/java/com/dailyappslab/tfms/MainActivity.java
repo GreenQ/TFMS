@@ -140,7 +140,7 @@ public class MainActivity extends ActionBarActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(MainActivity.this, MarketActivity.class);
+                Intent i = new Intent(MainActivity.this, AboutUsActivity.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
             }

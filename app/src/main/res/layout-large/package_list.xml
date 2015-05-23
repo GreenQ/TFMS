@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="55dp"
         android:id="@+id/crt"
         android:background="@drawable/top_panel"
         android:layout_marginBottom="0dp"
@@ -16,43 +16,42 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="55dp"
             android:id="@+id/header_panel">
 
             <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="30dp"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
                 android:background="@drawable/coni"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="3dp"
+                android:layout_marginRight="10dp"
                 android:id="@+id/relativeLayoutGold"
                 android:onClick="StartGameShop">
 
                 <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:background="@drawable/plus"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginLeft="7dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#00FFFFFF"
                     android:text="100"
                     android:alpha="0.7"
                     android:id="@+id/txtGold"
                     android:layout_centerVertical="true"
-                    android:textSize="18sp"
+                    android:textSize="30sp"
                     android:layout_marginRight="5dp"
                     android:textColor="#ffffffff"
                     android:layout_toLeftOf="@+id/coins"/>
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:background="@drawable/coins"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
@@ -62,8 +61,8 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_width="60dp"
-                android:layout_height="30dp"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
                 android:layout_centerVertical="true"
                 android:background="@drawable/coni"
                 android:layout_marginLeft="3dp"
@@ -72,8 +71,8 @@
 
                 <ImageButton
                     android:onClick="GoBack"
-                    android:layout_width="30dp"
-                    android:layout_height="12dp"
+                    android:layout_width="60dp"
+                    android:layout_height="24dp"
                     android:id="@+id/btnGoBackFromPopup"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
@@ -86,32 +85,32 @@
 
 
             <RelativeLayout
+                android:onClick="StartTicketsShop"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="45dp"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/coni"
-                android:onClick="StartTicketsShop"
                 android:id="@+id/cifra">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/txtTickets"
+                    android:onClick="StartTicketsShop"
                     android:text="0/5"
                     android:background="#00FFFFFF"
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
                     android:textColor="#ffffffff"
-                    android:textSize="18sp"
-                    android:alpha="0.7"
-                    android:onClick="StartTicketsShop"/>
+                    android:textSize="30sp"
+                    android:alpha="0.7"/>
 
                 <ImageView
-                    android:layout_toRightOf="@+id/txtTickets"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
                     android:onClick="StartTicketsShop"
+                    android:layout_toRightOf="@+id/txtTickets"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"

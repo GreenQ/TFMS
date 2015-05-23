@@ -15,46 +15,7 @@
             android:layout_height="35dp"
             android:id="@+id/header_panel">
 
-            <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:background="@drawable/coni"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="3dp"
-                android:id="@+id/relativeLayoutGold"
-                android:onClick="StartGameShop">
 
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:background="@drawable/plus"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="100"
-                    android:alpha="0.7"
-                    android:id="@+id/textViewGold"
-                    android:layout_centerVertical="true"
-                    android:textSize="18sp"
-                    android:layout_marginRight="5dp"
-                    android:textColor="#ffffffff"
-                    android:layout_toLeftOf="@+id/coins"/>
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/coins"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/coins"
-                    android:layout_marginRight="5dp"/>
-
-            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="60dp"
@@ -66,6 +27,7 @@
                 android:onClick="GoBack">
 
                 <ImageButton
+                    android:onClick="GoBack"
                     android:layout_width="30dp"
                     android:layout_height="12dp"
                     android:id="@+id/btnGoBackFromPopup"

@@ -71,6 +71,7 @@
                 android:onClick="GoBack">
 
                 <ImageButton
+                    android:onClick="GoBack"
                     android:layout_width="30dp"
                     android:layout_height="12dp"
                     android:id="@+id/btnGoBackFromPopup"
@@ -90,6 +91,7 @@
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/coni"
+                android:onClick="StartTicketsShop"
                 android:id="@+id/cifra">
 
                 <TextView

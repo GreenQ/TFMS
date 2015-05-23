@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:alpha="0.7"></RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true">
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/net"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/wiwin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fffdfbff"
+                android:textSize="45sp"
+                android:background="#00FFFFFF"
+                android:text="Вы выиграли"/>
+
+        </RelativeLayout>
+
+
+
+        <ImageView
+            android:layout_below="@+id/net"
+            android:layout_marginTop="10dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:id="@+id/dikaprio"
+            android:background="@drawable/mak"
+            android:layout_centerHorizontal="true"
+            />
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dikaprio"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/relativeLayout3"
+                android:layout_centerVertical="true"
+                android:padding="5dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:id="@+id/wincoins"
+                    android:background="#00FFFFFF"
+                    android:textColor="#FFFFFF"
+                    android:textSize="70sp"
+                    android:layout_centerVertical="true" />
+
+                <ImageView
+                    android:layout_toRightOf="@+id/wincoins"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/coins"
+                    android:id="@+id/imageView5"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/rltvContinue"
+                android:layout_marginTop="10dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/nextlvl"
+                android:layout_alignParentRight="true"
+                >
+
+
+
+            </RelativeLayout>
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="70dp"-->
+            <!--android:layout_height="70dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@drawable/exit"-->
+            <!--android:layout_alignParentLeft="true">-->
+
+
+            <!--</RelativeLayout>-->
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/admob"
+        android:layout_alignParentBottom="true">
+
+    </LinearLayout>
+
+</RelativeLayout>

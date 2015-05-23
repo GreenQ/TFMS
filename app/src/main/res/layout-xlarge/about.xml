@@ -6,20 +6,20 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="60dp"
         android:background="@drawable/top_panel"
         android:id="@+id/crt">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="60dp"
             android:id="@+id/header_panel">
 
 
 
             <RelativeLayout
-                android:layout_width="60dp"
-                android:layout_height="30dp"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
                 android:layout_centerVertical="true"
                 android:background="@drawable/coni"
                 android:layout_marginLeft="3dp"
@@ -28,8 +28,8 @@
 
                 <ImageButton
                     android:onClick="GoBack"
-                    android:layout_width="30dp"
-                    android:layout_height="12dp"
+                    android:layout_width="60dp"
+                    android:layout_height="24dp"
                     android:id="@+id/btnGoBackFromPopup"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
@@ -62,14 +62,15 @@
         android:layout_marginTop="2dp"
         android:background="#00FFFFFF"
         android:gravity="center"
-        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:textSize="35dp"
         android:textStyle="bold"/>
 
     <TextView
         android:layout_margin="5dp"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:textSize="20sp"
+        android:textSize="26sp"
         android:background="#00FFFFFF"
         android:textColor="#FFFFFF"
         android:autoLink="email"
