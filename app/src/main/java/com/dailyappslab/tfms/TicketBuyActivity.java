@@ -1,7 +1,7 @@
 package com.dailyappslab.tfms;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -12,8 +12,6 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import com.anjlab.android.iab.v3.BillingProcessor;
-import com.anjlab.android.iab.v3.TransactionDetails;
 
 /**
  * Created by GreenQ on 07.05.2015.
@@ -22,8 +20,8 @@ public class TicketBuyActivity extends Activity {
     CountDownTimer countDownTimer;
     CountDownTimer globalTimer;
     Button btnClose;
-    public static TextView txtTime;
-    public static TextView txtTickets;
+    TextView txtTime;
+    TextView txtTickets;
     Preferences preferences;
     RelativeLayout rltvTicket1;
     RelativeLayout rltvTicket2;
@@ -34,6 +32,17 @@ public class TicketBuyActivity extends Activity {
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ticket_market);
+
+        String fontPath = "fonts/a_BremenCapsNr.TTF";
+
+        TextView text = (TextView) findViewById(R.id.txtTickets);
+
+        // Font Face
+        Typeface typeface = Typeface.createFromAsset(getAssets(), fontPath);
+
+        // Applying font
+        text.setTypeface(typeface);
+
         preferences = new Preferences(this);
         btnClose = (Button) findViewById(R.id.btnClose);
 
@@ -41,65 +50,24 @@ public class TicketBuyActivity extends Activity {
         rltvTicket1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(preferences.GetCurrentGold() >=10) {
-                    ConfirmTicketBuyActivity.TicketsToBuy = 1;
-                    ConfirmTicketBuyActivity.Message = "Вы уверены, что хотите приобрести 1 билет?";
-                    Intent i = new Intent(TicketBuyActivity.this, ConfirmTicketBuyActivity.class);
-                    startActivity(i);
-                }
-                else {
-                    Intent i = new Intent(TicketBuyActivity.this, MarketActivity.class);
-                    startActivity(i);
-                }
+
             }
         });
         rltvTicket2 = (RelativeLayout) findViewById(R.id.rltvTicket2);
-        rltvTicket2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(preferences.GetCurrentGold() >= 20)
-                {
-                ConfirmTicketBuyActivity.TicketsToBuy = 2;
-                ConfirmTicketBuyActivity.Message = "Вы уверены, что хотите приобрести 2 билета?";
-                Intent i = new Intent(TicketBuyActivity.this, ConfirmTicketBuyActivity.class);
-                startActivity(i);
-                }
-                else {
-                    Intent i = new Intent(TicketBuyActivity.this, MarketActivity.class);
-                    startActivity(i);
-                }
-            }
-        });
         rltvTicket5 = (RelativeLayout) findViewById(R.id.rltvTicket5);
-        rltvTicket5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(preferences.GetCurrentGold() >= 50) {
-                    ConfirmTicketBuyActivity.TicketsToBuy = 5;
-                    ConfirmTicketBuyActivity.Message = "Вы уверены, что хотите приобрести 5 билетов?";
-                    Intent i = new Intent(TicketBuyActivity.this, ConfirmTicketBuyActivity.class);
-                    startActivity(i);}
-                else {
-                    Intent i = new Intent(TicketBuyActivity.this, MarketActivity.class);
-                    startActivity(i);
-                }
-
-            }
-        });
 
         txtTickets  = (TextView) findViewById(R.id.txtTickets);
         txtTime = (TextView) findViewById(R.id.txtTime);
-        txtTime.setText("");
         txtTickets.setText(preferences.GetCurrentTickets() + "/5");
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //globalTimer.cancel();
+                globalTimer.cancel();
                 finish();
             }
         });
 
-        //GetTicketsDueTime();
+        GetTicketsDueTime();
 
 
     }
@@ -109,11 +77,11 @@ public class TicketBuyActivity extends Activity {
         //txtTime = (TextView) findViewById( R.id.txtTime );
         switch (instruction) {
             case "new":
-                globalTimer = new CountDownTimer(15000, 1000) {
+                globalTimer = new CountDownTimer(420000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
                         txtTime.setText(new SimpleDateFormat("mm:ss").format(new Date( millisUntilFinished)));
-                        if(((millisUntilFinished) % 15000) < 1000)
+                        if(((millisUntilFinished) % 420000) < 1000)
                         {
 //                    preferences.EditTickets(preferences.GetCurrentTickets() + 1);
 //                    txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
@@ -125,8 +93,7 @@ public class TicketBuyActivity extends Activity {
                     public void onFinish() {
                         if (preferences.GetCurrentTickets() < 5) {
                             //preferences.EditTickets(preferences.GetCurrentTickets() + 1);
-                            //txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
-                            GetDelayedTickets();
+                            txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
                             if (preferences.GetCurrentTickets() < 5)
                                 CountTime("continue");
                             txtTime.setText("");
@@ -140,11 +107,11 @@ public class TicketBuyActivity extends Activity {
                 }
                 catch(Exception ex)
                 {}
-                globalTimer = new CountDownTimer(15000, 1000) {
+                globalTimer = new CountDownTimer(420000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
                         txtTime.setText(new SimpleDateFormat("mm:ss").format(new Date( millisUntilFinished)));
-                        if(((millisUntilFinished) % 15000) < 5000)
+                        if(((millisUntilFinished) % 420000) < 5000)
                         {
                             //preferences.EditTickets(preferences.GetCurrentTickets() + 1);
                             txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
@@ -158,8 +125,7 @@ public class TicketBuyActivity extends Activity {
                         if(preferences.GetCurrentTickets() < 5)
                         {
                             //preferences.EditTickets(preferences.GetCurrentTickets() + 1);
-                            //txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
-                            GetDelayedTickets();
+                            txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
                             if (preferences.GetCurrentTickets() < 5)
                                 CountTime("continue");
                             txtTime.setText("");
@@ -177,11 +143,11 @@ public class TicketBuyActivity extends Activity {
 
         long differenceTime = currentTime - lastTicketUsage;
 
-        long restTime = differenceTime % 15000;
+        long restTime = differenceTime % 420000;
 
         long moduledTime = differenceTime - restTime;
 
-        int possibleTickets = (int) (moduledTime/15000);
+        int possibleTickets = (int) (moduledTime/420000);
 
 
         int temp = preferences.GetCurrentTickets() + possibleTickets;
@@ -192,11 +158,11 @@ public class TicketBuyActivity extends Activity {
             //preferences.EditTickets(temp);
             txtTickets.setText(String.valueOf(temp) + "/5");
 
-            globalTimer = new CountDownTimer(15000 - restTime, 1000) {
+            globalTimer = new CountDownTimer(Globals.TimeLeft, 1000) {
 
                 public void onTick(long millisUntilFinished) {
                     txtTime.setText(new SimpleDateFormat("mm:ss").format(new Date( millisUntilFinished)));
-                     if(((millisUntilFinished) % 15000) < 2000)
+                     if(((millisUntilFinished) % 420000) < 1000)
                     {
 //                    preferences.EditTickets(preferences.GetCurrentTickets() + 1);
                     txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
@@ -208,8 +174,7 @@ public class TicketBuyActivity extends Activity {
                 public void onFinish() {
                     if (preferences.GetCurrentTickets() < 6) {
                         //preferences.EditTickets(preferences.GetCurrentTickets() + 1);
-                        //txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
-                        GetDelayedTickets();
+                        txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
                         if (preferences.GetCurrentTickets() < 5)
                             CountTime("continue");
                         txtTime.setText("");
@@ -219,32 +184,6 @@ public class TicketBuyActivity extends Activity {
         }
         else {
             preferences.EditTickets(5);
-            txtTickets.setText(String.valueOf(5) + "/5");
-        }
-    }
-
-    public void GetDelayedTickets()
-    {
-        long lastTicketUsage = preferences.GetTicketUsageTime();
-        long currentTime = System.currentTimeMillis();
-
-        long differenceTime = currentTime - lastTicketUsage;
-
-        long restTime = differenceTime % 15000;
-
-        long moduledTime = differenceTime - restTime;
-
-        int possibleTickets = (int) (moduledTime/15000);
-
-
-        int temp = preferences.GetCurrentTickets() + possibleTickets;
-        Toast.makeText(getBaseContext(), String.valueOf(temp), Toast.LENGTH_SHORT).show();
-
-        if(temp < 5)
-        {
-            txtTickets.setText(String.valueOf(temp) + "/5");
-        }
-        else {
             txtTickets.setText(String.valueOf(5) + "/5");
         }
     }

@@ -24,7 +24,9 @@
 
 <RelativeLayout
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:id="@+id/curbil">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,20 +40,23 @@
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/curbil"
+                android:layout_centerVertical="true">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="45dp"
+                    android:layout_marginLeft="5dp"
                     android:background="@drawable/bilet"/>
 
                 </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -107,16 +112,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="35sp"
+            android:textSize="30sp"
             android:textColor="#FFFFFF"
             android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
             android:text="1"/>
 
         <ImageView
             android:layout_marginLeft="35dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/kasa"/>
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/kasa"
+            android:layout_centerVertical="true"/>
 
         </RelativeLayout>
 
@@ -137,15 +144,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="35sp"
+            android:textSize="30sp"
+            android:id="@+id/mon10"
             android:textColor="#FFFFFF"
             android:layout_marginLeft="12dp"
+            android:layout_centerVertical="true"
             android:text="10"/>
 
         <ImageView
-            android:layout_marginLeft="55dp"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_toRightOf="@id/mon10"
+            android:layout_marginLeft="5dp"
+
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:background="@drawable/coins"/>
 
@@ -175,15 +186,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="35sp"
+                    android:textSize="30sp"
                     android:textColor="#FFFFFF"
                     android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"
                     android:text="2"/>
 
                 <ImageView
                     android:layout_marginLeft="35dp"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
                     android:background="@drawable/kasa"/>
 
             </RelativeLayout>
@@ -205,15 +218,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="35sp"
+                    android:textSize="30sp"
                     android:textColor="#FFFFFF"
+                    android:id="@+id/mon20"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="12dp"
                     android:text="20"/>
 
                 <ImageView
-                    android:layout_marginLeft="55dp"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_toRightOf="@id/mon20"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_centerVertical="true"
                     android:background="@drawable/coins"/>
 
@@ -242,15 +258,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="35sp"
+                    android:textSize="30sp"
                     android:textColor="#FFFFFF"
                     android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"
                     android:text="5"/>
 
                 <ImageView
                     android:layout_marginLeft="35dp"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
                     android:background="@drawable/kasa"/>
 
             </RelativeLayout>
@@ -272,15 +290,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="35sp"
+                    android:textSize="30sp"
+                    android:id="@+id/mon50"
                     android:textColor="#FFFFFF"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="12dp"
                     android:text="50"/>
 
                 <ImageView
-                    android:layout_marginLeft="55dp"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_toRightOf="@id/mon50"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_centerVertical="true"
                     android:background="@drawable/coins"/>
 

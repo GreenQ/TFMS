@@ -95,7 +95,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:textColor="#ffffffff"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:id="@+id/txtCurPackage"
                     android:alpha="0.7"/>
 
@@ -158,7 +158,7 @@
     <RelativeLayout
         android:layout_below="@+id/oscar"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="200dp"
         android:id="@+id/qust"
         android:paddingLeft="5dp"
         android:paddingRight="5dp">
@@ -183,7 +183,7 @@
         android:onClick="PressYes"
         android:layout_marginLeft="40dp"
         android:layout_below="@+id/qust"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         ></RelativeLayout>
 
     <RelativeLayout
@@ -193,7 +193,7 @@
         android:background="@drawable/row_n"
         android:layout_alignParentRight="true"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:layout_below="@+id/qust"
         android:onClick="PressNo"></RelativeLayout>
 

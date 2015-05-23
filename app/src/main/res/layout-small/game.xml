@@ -95,7 +95,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:textColor="#ffffffff"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     android:id="@+id/txtCurPackage"
                     android:alpha="0.7"/>
 
@@ -188,7 +188,7 @@
         android:onClick="PressYes"
         android:layout_marginLeft="40dp"
         android:layout_below="@+id/qust"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         ></RelativeLayout>
 
     <RelativeLayout
@@ -198,7 +198,7 @@
         android:background="@drawable/row_n"
         android:layout_alignParentRight="true"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:layout_below="@+id/qust"
         android:onClick="PressNo"></RelativeLayout>
 
