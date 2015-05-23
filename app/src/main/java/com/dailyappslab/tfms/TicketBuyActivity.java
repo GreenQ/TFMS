@@ -37,15 +37,15 @@ public class TicketBuyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ticket_market);
 
-        String fontPath = "fonts/Paint Peel Initials.ttf";
-
-        TextView text = (TextView) findViewById(R.id.txtQuestion);
-
-        // Font Face
-        Typeface typeface = Typeface.createFromAsset(getAssets(), fontPath);
-
-        // Applying font
-        text.setTypeface(typeface);
+//        String fontPath = "fonts/Paint Peel Initials.ttf";
+//
+//        TextView text = (TextView) findViewById(R.id.txtQuestion);
+//
+//        // Font Face
+//        Typeface typeface = Typeface.createFromAsset(getAssets(), fontPath);
+//
+//        // Applying font
+//        text.setTypeface(typeface);
         
         preferences = new Preferences(this);
         btnClose = (Button) findViewById(R.id.btnClose);
