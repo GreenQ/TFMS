@@ -4,25 +4,17 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.media.Image;
 import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
@@ -37,6 +29,7 @@ public class GameActivity extends Activity {
     TextView txtQuestion;
     TextView txtCurLvl;
     TextView txtCurPackage;
+    public static TextView txtGold;
     Level level;
     Preferences preferences;
     Package[] packages;
@@ -57,16 +50,6 @@ public class GameActivity extends Activity {
             //requestWindowFeature(Window.FEATURE_NO_TITLE);
             setContentView(R.layout.game);
 
-            String fontPath = "fonts/a_Bremen.ttf";
-
-            TextView text = (TextView) findViewById(R.id.txtQuestion);
-
-            // Font Face
-            Typeface typeface = Typeface.createFromAsset(getAssets(), fontPath);
-
-            // Applying font
-            text.setTypeface(typeface);
-
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -85,6 +68,9 @@ public class GameActivity extends Activity {
             txtQuestion = (TextView) findViewById(R.id.txtQuestion);
             txtQuestion.setText(level.Fact);
 
+            txtGold = (TextView) findViewById(R.id.txtGold);
+            txtGold.setText(String.valueOf(preferences.GetCurrentGold()));
+
             txtCurLvl = (TextView) findViewById(R.id.txtCurLvl);
             txtCurLvl.setText(String.valueOf(displayedLevel) + "/10");
 
@@ -96,12 +82,19 @@ public class GameActivity extends Activity {
             AdView adView = (AdView)this.findViewById(R.id.adView);
             try
             {
-                adView.setAdSize(AdSize.SMART_BANNER);
-                adView.setAdUnitId("ca-app-pub-3376890691318599/5322587261");
+                //adView.setAdSize(AdSize.SMART_BANNER);
+                //adView.setAdUnitId("ca-app-pub-3376890691318599/5322587261");
                 AdRequest adRequest = new AdRequest.Builder().build();
 //
 
                 adView.loadAd(adRequest);
+
+
+
+                interstitial = new InterstitialAd(this);
+                interstitial.setAdUnitId("ca-app-pub-3376890691318599/6799320461");
+                AdRequest adRequesti = new AdRequest.Builder().build();
+                interstitial.loadAd(adRequesti);
 
                 //ShowRateUs();
             }
@@ -207,6 +200,12 @@ public class GameActivity extends Activity {
     {
         super.finish();
     }
+
+    public void StartGameShop(View view)
+    {
+        Intent i = new Intent(GameActivity.this, MarketActivity.class);
+        startActivity(i);
+    }
     //endregion
 
     //region #SUPPLEMENT
@@ -243,12 +242,8 @@ public class GameActivity extends Activity {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
         try {
-//            interstitial = new InterstitialAd(this);
-//            interstitial.setAdUnitId("ca-app-pub-3376890691318599/6799320461");
-//            AdRequest adRequesti = new AdRequest.Builder().build();
-//            interstitial.loadAd(adRequesti);
-//
-//            interstitial.show();
+            if(interstitial.isLoaded())
+                interstitial.show();
             //sadView = new SADView(this, "5536149602e39f1f00000000");
             //LinearLayout adLayout = (LinearLayout) popupView.findViewById(R.id.admob);
 
@@ -264,6 +259,18 @@ public class GameActivity extends Activity {
         rltvContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (preferences.GetCurrentTickets() == 0 && Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
+                    Intent i = new Intent(GameActivity.this, TicketBuyActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+                else
+                if(Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
+                    preferences.EditTickets(preferences.GetCurrentTickets() - 1);
+                    preferences.EditGold(preferences.GetCurrentGold()+5);
+                    txtGold.setText(String.valueOf(preferences.GetCurrentGold()));
+                }
                 popupWindowWin.dismiss();
             }
         });
@@ -297,9 +304,19 @@ public class GameActivity extends Activity {
         restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                if (preferences.GetCurrentTickets() == 0 && Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
+                    Intent i = new Intent(GameActivity.this, TicketBuyActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+                else {
+                    if(Globals.CurrentPackage.Id == preferences.GetCurrentPackage())
+                        preferences.EditTickets(preferences.GetCurrentTickets() - 1);
+                    popupWindowWin.dismiss();
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
+                }
             }
         });
 
@@ -358,6 +375,7 @@ public class GameActivity extends Activity {
                     //preferences.EditPackage(Globals.CurrentPackage.Id);
                     if(preferences.GetCurrentPackage() < Globals.CurrentPackage.Id)
                         preferences.EditPackage(Globals.CurrentPackage.Id);
+
 
                     txtCurPackage.setText(String.valueOf(Globals.CurrentPackage.Id));
                     displayedLevel = 0;
