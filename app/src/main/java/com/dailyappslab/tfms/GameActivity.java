@@ -82,12 +82,19 @@ public class GameActivity extends Activity {
             AdView adView = (AdView)this.findViewById(R.id.adView);
             try
             {
-                adView.setAdSize(AdSize.SMART_BANNER);
-                adView.setAdUnitId("ca-app-pub-3376890691318599/5322587261");
+                //adView.setAdSize(AdSize.SMART_BANNER);
+                //adView.setAdUnitId("ca-app-pub-3376890691318599/5322587261");
                 AdRequest adRequest = new AdRequest.Builder().build();
 //
 
                 adView.loadAd(adRequest);
+
+
+
+                interstitial = new InterstitialAd(this);
+                interstitial.setAdUnitId("ca-app-pub-3376890691318599/6799320461");
+                AdRequest adRequesti = new AdRequest.Builder().build();
+                interstitial.loadAd(adRequesti);
 
                 //ShowRateUs();
             }
@@ -235,12 +242,8 @@ public class GameActivity extends Activity {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
         try {
-//            interstitial = new InterstitialAd(this);
-//            interstitial.setAdUnitId("ca-app-pub-3376890691318599/6799320461");
-//            AdRequest adRequesti = new AdRequest.Builder().build();
-//            interstitial.loadAd(adRequesti);
-//
-//            interstitial.show();
+            if(interstitial.isLoaded())
+                interstitial.show();
             //sadView = new SADView(this, "5536149602e39f1f00000000");
             //LinearLayout adLayout = (LinearLayout) popupView.findViewById(R.id.admob);
 
@@ -256,8 +259,6 @@ public class GameActivity extends Activity {
         rltvContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                preferences.EditGold(preferences.GetCurrentGold()+5);
-                txtGold.setText(String.valueOf(preferences.GetCurrentGold()));
 
                 if (preferences.GetCurrentTickets() == 0 && Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
                     Intent i = new Intent(GameActivity.this, TicketBuyActivity.class);
@@ -265,7 +266,11 @@ public class GameActivity extends Activity {
                     finish();
                 }
                 else
-                preferences.EditTickets(preferences.GetCurrentTickets()-1);
+                if(Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
+                    preferences.EditTickets(preferences.GetCurrentTickets() - 1);
+                    preferences.EditGold(preferences.GetCurrentGold()+5);
+                    txtGold.setText(String.valueOf(preferences.GetCurrentGold()));
+                }
                 popupWindowWin.dismiss();
             }
         });
@@ -305,7 +310,8 @@ public class GameActivity extends Activity {
                     finish();
                 }
                 else {
-                    preferences.EditTickets(preferences.GetCurrentTickets() - 1);
+                    if(Globals.CurrentPackage.Id == preferences.GetCurrentPackage())
+                        preferences.EditTickets(preferences.GetCurrentTickets() - 1);
                     popupWindowWin.dismiss();
                     Intent intent = getIntent();
                     finish();
