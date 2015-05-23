@@ -107,6 +107,12 @@ public class MainActivity extends ActionBarActivity {
         startActivity(i);
     }
 
+    public void StartAboutUs(View view)
+    {
+        Intent i = new Intent(MainActivity.this, AboutUsActivity.class);
+        startActivity(i);
+    }
+
     public void StartTicketShop(View view)
     {
         Intent i = new Intent(MainActivity.this, TicketBuyActivity.class);

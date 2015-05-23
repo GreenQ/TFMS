@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
@@ -259,19 +260,25 @@ public class GameActivity extends Activity {
         rltvContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (preferences.GetCurrentTickets() == 0 && Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
-                    Intent i = new Intent(GameActivity.this, TicketBuyActivity.class);
-                    startActivity(i);
+                if(preferences.GetCurrentPackage() == 50)
+                {
+                    //Globals.DisplayAlert(getBaseContext(), "Вы прошли все доступные уровни. Теперь вы по праву можете считать себя гуру кино.", "Поздравляем!");
+                    Toast.makeText(getApplicationContext(), "Вы прошли все доступные уровни. Теперь вы по праву можете считать себя гуру кино.", Toast.LENGTH_LONG).show();
                     finish();
                 }
                 else
-                if(Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
-                    preferences.EditTickets(preferences.GetCurrentTickets() - 1);
-                    preferences.EditGold(preferences.GetCurrentGold()+5);
-                    txtGold.setText(String.valueOf(preferences.GetCurrentGold()));
+                {
+                    if (preferences.GetCurrentTickets() == 0 && Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
+                        Intent i = new Intent(GameActivity.this, TicketBuyActivity.class);
+                        startActivity(i);
+                        finish();
+                    } else if (Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
+                        preferences.EditTickets(preferences.GetCurrentTickets() - 1);
+                        preferences.EditGold(preferences.GetCurrentGold() + 5);
+                        txtGold.setText(String.valueOf(preferences.GetCurrentGold()));
+                    }
+                    popupWindowWin.dismiss();
                 }
-                popupWindowWin.dismiss();
             }
         });
         popupWindowWin.showAtLocation(findViewById(R.id.rootLayout), 0, 0, -10);
@@ -329,7 +336,7 @@ public class GameActivity extends Activity {
         popupWindowWin.showAtLocation(findViewById(R.id.rootLayout), 0, 0, -10);
     }
 
-    private void ShowGuessResultPopUp(final boolean isCorrect) {
+     private void ShowGuessResultPopUp(final boolean isCorrect) {
 
 
         LayoutInflater layoutInflater
@@ -369,29 +376,35 @@ public class GameActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                if (Globals.CurrentLevel == Globals.CurrentPackage.MaxQuestion) {
-                    //Globals.DisplayAlert(getBaseContext(), "Уровень пройден", "Грац");
-                    if(Globals.CurrentPackage.Id != 50) {
-                        Globals.CurrentPackage = Package.GetNextPackage(Globals.CurrentPackage, packages);
-                        //preferences.EditPackage(Globals.CurrentPackage.Id);
-                        if (preferences.GetCurrentPackage() < Globals.CurrentPackage.Id)
-                            preferences.EditPackage(Globals.CurrentPackage.Id);
+                try {
+                    if (Globals.CurrentLevel == Globals.CurrentPackage.MaxQuestion) {
+                        //Globals.DisplayAlert(getBaseContext(), "Уровень пройден", "Грац");
+                        if (Globals.CurrentPackage.Id != 50) {
+                            Globals.CurrentPackage = Package.GetNextPackage(Globals.CurrentPackage, packages);
+                            //preferences.EditPackage(Globals.CurrentPackage.Id);
+                            if (preferences.GetCurrentPackage() < Globals.CurrentPackage.Id)
+                                preferences.EditPackage(Globals.CurrentPackage.Id);
+                        }
+
+
+                        txtCurPackage.setText(String.valueOf(Globals.CurrentPackage.Id));
+                        displayedLevel = 0;
+                        ShowWinPopUp();
+                         oscarsAmount = 2;
+                        SetOscarImage();
                     }
-
-
-                    txtCurPackage.setText(String.valueOf(Globals.CurrentPackage.Id));
-                    displayedLevel = 0;
-                    ShowWinPopUp();
-                    Globals.DisplayAlert(getBaseContext(), "Вы прошли все доступные уровни. Теперь вы по праву можете считать себя гуру кино.", "Поздравляем!");
-                    oscarsAmount = 2;
-                    SetOscarImage();
+                    NextLevel(null);
+                    popupWindowWin.dismiss();
+                    if (oscarsAmount == -1) {
+                        ShowLosePopUp();
+                    }
                 }
-                NextLevel(null);
-                popupWindowWin.dismiss();
-                if (oscarsAmount == -1) {
-                    ShowLosePopUp();
+                catch (Exception ex)
+                {
+                    Globals.DisplayAlert(getBaseContext(), ex.getMessage(), "Error occured");
                 }
             }
+
         });
 
         popupWindowWin.showAtLocation(findViewById(R.id.rootLayout), 0, 0, -10);
@@ -402,7 +415,7 @@ public class GameActivity extends Activity {
         } catch (Exception ex) {
             Globals.DisplayAlert(this, ex.getMessage(), "Возникла непредвиденная ошибка");
         }
-    }
+                  }
     //endregion
 
     //region #OSCARS

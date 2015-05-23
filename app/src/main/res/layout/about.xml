@@ -23,7 +23,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="3dp"
                 android:id="@+id/relativeLayoutGold"
-                android:onClick="ShowGameShop">
+                android:onClick="StartGameShop">
 
                 <ImageView
                     android:layout_width="15dp"
@@ -43,7 +43,7 @@
                     android:textSize="18sp"
                     android:layout_marginRight="5dp"
                     android:textColor="#ffffffff"
-                    android:layout_toLeftOf="@+id/coins"/>
+                    android:layout_toLeftOf="@+id/txtGold"/>
 
                 <ImageView
                     android:layout_width="20dp"
@@ -63,7 +63,7 @@
                 android:background="@drawable/coni"
                 android:layout_marginLeft="3dp"
                 android:id="@+id/goBackFromPopup"
-                android:onClick="PressBack">
+                android:onClick="GoBack">
 
                 <ImageButton
                     android:layout_width="30dp"
@@ -79,26 +79,7 @@
 
 
 
-            <RelativeLayout
-                android:layout_width="65dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/coni"
-                android:id="@+id/cifra">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:textColor="#ffffffff"
-                    android:textSize="22sp"
-                    android:id="@+id/txtCurLvl"
-                    android:alpha="0.7"/>
-
-            </RelativeLayout>
 
 
 
