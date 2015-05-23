@@ -369,6 +369,7 @@ public class GameActivity extends Activity {
         catch (Exception ex)
         {}
 //
+        //
         RelativeLayout restart = (RelativeLayout) popupView.findViewById(R.id.rltvRestart);
         RelativeLayout quit = (RelativeLayout) popupView.findViewById(R.id.rltvQuit);
         restart.setOnClickListener(new View.OnClickListener() {
