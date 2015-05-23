@@ -14,6 +14,7 @@ public class Preferences {
     SharedPreferences pTicketsAtUsage;
     SharedPreferences pFirstTicketUsageTime;
     SharedPreferences pLastTicketUsageTime;
+    SharedPreferences pGameDone;
 
     public Preferences(Context context)
     {

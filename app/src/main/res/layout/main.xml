@@ -129,7 +129,8 @@
         android:layout_below="@+id/btnPlay"
         android:background="@drawable/info1"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="100dp"/>
+        android:layout_marginLeft="100dp"
+        android:onClick="StartAboutUs"/>
 
     <LinearLayout
         android:orientation="horizontal"

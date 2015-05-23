@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Кинофакты: да или нет</string>
-    <string name="base64cod">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAskYAgFXg1D61L2kYBlqRNcH0lASDbmOxv4+EntfXGoLi6LlguAQCTo518I/HeE1CuUlx9dIcEvS/HBj/Yonf3mxl8Snhd+aWgltphVnOfHKcPufdOdgi/f5vpaEOP8/Ii9SDA4nwQdFKQAcvqRe+zoRRMGtiXbM9LvQRFr6JXnzEmqMICyJnpuPpRU4XAevm/6egaHpApG27ODW39m3L+jO4q8H9UcxhQV7fIL5qs3ljIwrxYgs7PkzytRhFzOS54UEhPVAJhXfYi/FN1/km2M61EsWG6pNRyF7PQO704om6CU2RA+qzSZqEmFpvjCgbTgyGRnIrGM/F0qsF3VY3SQIDAQAB</string>
+    <string name="base64cod">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAop5qCrnb1m0Asm86z3ALz2SrGaBfj9Y5Br4gxVChbQkhXHoWG7axxRZl1xQVKhqydxDDAWAZn68edju1SHcOCmNm4Ap4Z47afoyyck6rISDuPiZ3kUEqMO6QqtORhckvzkZBd4PRoKl4t0Gb6XN+60W1RbyIXlrn8mXjSxJcp8TzfldVmaK7hnssdodTnpIn5/CkEfUOxqw7TTRoIybOLI9jB4wNmND5pGdvbhEpGqF1y05WGFuuQqS2Z1zAyPoCtO7TZo/PmLYESclLOVY4AyG3ZZc+r31moXek79i3wRyKIy7Pr9VNJxdSuz/F7yeF7CNhXahrMHJIUYCmaa37ewIDAQAB</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
