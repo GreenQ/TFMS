@@ -76,7 +76,7 @@ public class ConfirmTicketBuyActivity extends Activity {
             MainActivity.txtGold.setText(String.valueOf(preferences.GetCurrentGold()));
             PackageActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets()) + "/5");
             PackageActivity.txtGold.setText(String.valueOf(preferences.GetCurrentGold()));
-            GameActivity.txtGold.setText(String.valueOf(preferences.GetCurrentGold()));
+            //GameActivity.txtGold.setText(String.valueOf(preferences.GetCurrentGold()));
             TicketBuyActivity.txtTickets.setText(String.valueOf(preferences.GetCurrentTickets() + "/5"));
             TicketBuyActivity.txtTime.setText("");
         }

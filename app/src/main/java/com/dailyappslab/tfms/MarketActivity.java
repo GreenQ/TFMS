@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.anjlab.android.iab.v3.TransactionDetails;
@@ -31,6 +33,10 @@ public class MarketActivity extends Activity {
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gameshop);
+
+
+
+
         btnClose = (Button) findViewById(R.id.btnClose);
         btn100 = ( RelativeLayout ) findViewById( R.id.m1 );
         btn250 = ( RelativeLayout ) findViewById( R.id.m2 );
