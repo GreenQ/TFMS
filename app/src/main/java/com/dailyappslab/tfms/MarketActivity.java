@@ -16,11 +16,11 @@ import com.anjlab.android.iab.v3.TransactionDetails;
  */
 public class MarketActivity extends Activity {
     Button btnClose;
+    RelativeLayout btn100;
+    RelativeLayout btn250;
+    RelativeLayout btn500;
     RelativeLayout btn1000;
     RelativeLayout btn2500;
-    RelativeLayout btn5000;
-    RelativeLayout btn10000;
-    RelativeLayout btn25000;
     private int currentPrise;
     private String currentPriseTag ="";
     private boolean readyToPurchase;
@@ -32,45 +32,45 @@ public class MarketActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gameshop);
         btnClose = (Button) findViewById(R.id.btnClose);
-        btn1000 = ( RelativeLayout ) findViewById( R.id.m1 );
-        btn2500 = ( RelativeLayout ) findViewById( R.id.m2 );
-        btn5000 = ( RelativeLayout ) findViewById( R.id.m3 );
-        btn10000 = ( RelativeLayout ) findViewById( R.id.m4 );
-        btn25000 = ( RelativeLayout ) findViewById( R.id.m5 );
-
-        btn25000.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickPrised(25000, "tfmsruc25000" );
-            }
-        });
-
-        btn10000.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickPrised(10000, "tfmsruc10000"  );
-            }
-        });
-
-        btn5000.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickPrised(5000, "tfmsruc5000" );
-            }
-        });
+        btn100 = ( RelativeLayout ) findViewById( R.id.m1 );
+        btn250 = ( RelativeLayout ) findViewById( R.id.m2 );
+        btn500 = ( RelativeLayout ) findViewById( R.id.m3 );
+        btn1000 = ( RelativeLayout ) findViewById( R.id.m4 );
+        btn2500 = ( RelativeLayout ) findViewById( R.id.m5 );
 
         btn2500.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clickPrised(2500, "tfmsruc2500" );
             }
-
         });
 
         btn1000.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickPrised(1000 , "tfmsruc1000" );
+                clickPrised(1000, "tfmsruc1000"  );
+            }
+        });
+
+        btn500.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickPrised(500, "tfmsruc500" );
+            }
+        });
+
+        btn250.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickPrised(250, "tfmsruc250" );
+            }
+
+        });
+
+        btn100.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickPrised(100 , "tfmsruc100" );
             }
         });
 

@@ -371,15 +371,18 @@ public class GameActivity extends Activity {
             public void onClick(View v) {
                 if (Globals.CurrentLevel == Globals.CurrentPackage.MaxQuestion) {
                     //Globals.DisplayAlert(getBaseContext(), "Уровень пройден", "Грац");
-                    Globals.CurrentPackage = Package.GetNextPackage(Globals.CurrentPackage, packages);
-                    //preferences.EditPackage(Globals.CurrentPackage.Id);
-                    if(preferences.GetCurrentPackage() < Globals.CurrentPackage.Id)
-                        preferences.EditPackage(Globals.CurrentPackage.Id);
+                    if(Globals.CurrentPackage.Id != 50) {
+                        Globals.CurrentPackage = Package.GetNextPackage(Globals.CurrentPackage, packages);
+                        //preferences.EditPackage(Globals.CurrentPackage.Id);
+                        if (preferences.GetCurrentPackage() < Globals.CurrentPackage.Id)
+                            preferences.EditPackage(Globals.CurrentPackage.Id);
+                    }
 
 
                     txtCurPackage.setText(String.valueOf(Globals.CurrentPackage.Id));
                     displayedLevel = 0;
                     ShowWinPopUp();
+                    Globals.DisplayAlert(getBaseContext(), "Вы прошли все доступные уровни. Теперь вы по праву можете считать себя гуру кино.", "Поздравляем!");
                     oscarsAmount = 2;
                     SetOscarImage();
                 }
