@@ -81,6 +81,12 @@
         <activity android:name=".ConfirmTicketBuyActivity"
             android:theme="@style/AppThemeDialog"></activity>
 
+        <activity android:name=".ConfirmExitActivity"
+            android:theme="@style/AppThemeDialog"></activity>
+
+        <activity android:name=".RateUsActivity"
+            android:theme="@style/AppThemeDialog"></activity>
+
         <activity android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
 

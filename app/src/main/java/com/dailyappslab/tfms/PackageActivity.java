@@ -3,6 +3,7 @@ package com.dailyappslab.tfms;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.WindowManager;
@@ -81,9 +82,14 @@ public class PackageActivity extends ActionBarActivity {
                     }
 
                     else {
-
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
                         Intent i = new Intent(PackageActivity.this, GameActivity.class);
                         startActivity(i);
+                                overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+                            }
+                        }, 220);
 
                         if (Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
                             preferences.EditTickets(preferences.GetCurrentTickets()-1);
@@ -119,8 +125,14 @@ public class PackageActivity extends ActionBarActivity {
 
     public void StartTicketsShop(View view)
     {
-        Intent i = new Intent(PackageActivity.this, TicketBuyActivity.class);
-        startActivity(i);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(PackageActivity.this, TicketBuyActivity.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+            }
+        }, 220);
     }
 //
 //    @Override
@@ -325,14 +337,18 @@ public class PackageActivity extends ActionBarActivity {
                 if (Globals.CurrentPackage.Id <= preferences.GetCurrentPackage()) {
 
                     if (preferences.GetCurrentTickets() == 0 & Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
-                        Intent i = new Intent(PackageActivity.this, TicketBuyActivity.class);
-                        startActivity(i);
+                        StartTicketsShop(null);
                     }
 
                     else {
-
-                        Intent i = new Intent(PackageActivity.this, GameActivity.class);
-                        startActivity(i);
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent i = new Intent(PackageActivity.this, GameActivity.class);
+                                startActivity(i);
+                                overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+                            }
+                        }, 220);
 
                         if (Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
                             preferences.EditTickets(preferences.GetCurrentTickets()-1);
@@ -355,8 +371,14 @@ public class PackageActivity extends ActionBarActivity {
                 }
 
                 else {
-                    Intent i = new Intent(PackageActivity.this, PackageLockedActivity.class);
-                    startActivity(i);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent i = new Intent(PackageActivity.this, PackageLockedActivity.class);
+                            startActivity(i);
+                            overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+                        }
+                    }, 220);
                 }
 
             }
@@ -545,8 +567,14 @@ public class PackageActivity extends ActionBarActivity {
 
     public void StartGameShop(View view)
     {
-        Intent i = new Intent(PackageActivity.this, MarketActivity.class);
-        startActivity(i);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(PackageActivity.this, MarketActivity.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+            }
+        }, 220);
     }
 
     public void GoBack(View view)

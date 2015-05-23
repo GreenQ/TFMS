@@ -14,7 +14,7 @@ public class Preferences {
     SharedPreferences pTicketsAtUsage;
     SharedPreferences pFirstTicketUsageTime;
     SharedPreferences pLastTicketUsageTime;
-    SharedPreferences pGameDone;
+    SharedPreferences pRateAsk;
 
     public Preferences(Context context)
     {
@@ -25,9 +25,16 @@ public class Preferences {
         pTicketsAtUsage = context.getSharedPreferences("TICKETS_AT_USAGE", Context.MODE_PRIVATE);
         pFirstTicketUsageTime = context.getSharedPreferences("TICKET_TIME", Context.MODE_PRIVATE);
         pLastTicketUsageTime = context.getSharedPreferences("LAST_TICKET_TIME", Context.MODE_PRIVATE);
+        pRateAsk = context.getSharedPreferences("RATE_ASK", Context.MODE_PRIVATE);
     }
 
     //region #GET STORED PREFERENCES
+    public boolean AskForRate()
+    {
+        boolean temp = pRateAsk.getBoolean("RATE_ASK", true);
+        return temp;
+    }
+
     public int GetCurrentLevel()
     {
         int temp = pLvl.getInt("LVL", 1) ;
@@ -129,6 +136,13 @@ public class Preferences {
     //endregion
 
     //region #EDIT STORED PREFERENCES
+    public void EditAskForRate()
+    {
+        SharedPreferences.Editor editor = pRateAsk.edit();
+        editor.putBoolean("RATE_ASK", false);
+        editor.commit();
+    }
+
     public void EditLevel(int i)
     {
         if (!CheckLevelRange(i))

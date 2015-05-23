@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -56,12 +57,24 @@ public class TicketBuyActivity extends Activity {
                 if(preferences.GetCurrentGold() >=10) {
                     ConfirmTicketBuyActivity.TicketsToBuy = 1;
                     ConfirmTicketBuyActivity.Message = "Вы уверены, что хотите приобрести 1 билет?";
-                    Intent i = new Intent(TicketBuyActivity.this, ConfirmTicketBuyActivity.class);
-                    startActivity(i);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent i = new Intent(TicketBuyActivity.this, ConfirmTicketBuyActivity.class);
+                            startActivity(i);
+                            overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+                        }
+                    }, 220);
                 }
                 else {
-                    Intent i = new Intent(TicketBuyActivity.this, MarketActivity.class);
-                    startActivity(i);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent i = new Intent(TicketBuyActivity.this, MarketActivity.class);
+                            startActivity(i);
+                            overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+                        }
+                    }, 220);
                 }
             }
         });
@@ -73,12 +86,24 @@ public class TicketBuyActivity extends Activity {
                 {
                 ConfirmTicketBuyActivity.TicketsToBuy = 2;
                 ConfirmTicketBuyActivity.Message = "Вы уверены, что хотите приобрести 2 билета?";
-                Intent i = new Intent(TicketBuyActivity.this, ConfirmTicketBuyActivity.class);
-                startActivity(i);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent i = new Intent(TicketBuyActivity.this, ConfirmTicketBuyActivity.class);
+                            startActivity(i);
+                            overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+                        }
+                    }, 220);
                 }
                 else {
-                    Intent i = new Intent(TicketBuyActivity.this, MarketActivity.class);
-                    startActivity(i);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent i = new Intent(TicketBuyActivity.this, MarketActivity.class);
+                            startActivity(i);
+                            overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+                        }
+                    }, 220);
                 }
             }
         });
@@ -89,11 +114,23 @@ public class TicketBuyActivity extends Activity {
                 if(preferences.GetCurrentGold() >= 50) {
                     ConfirmTicketBuyActivity.TicketsToBuy = 5;
                     ConfirmTicketBuyActivity.Message = "Вы уверены, что хотите приобрести 5 билетов?";
-                    Intent i = new Intent(TicketBuyActivity.this, ConfirmTicketBuyActivity.class);
-                    startActivity(i);}
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent i = new Intent(TicketBuyActivity.this, ConfirmTicketBuyActivity.class);
+                            startActivity(i);
+                            overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+                        }
+                    }, 220);}
                 else {
-                    Intent i = new Intent(TicketBuyActivity.this, MarketActivity.class);
-                    startActivity(i);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent i = new Intent(TicketBuyActivity.this, MarketActivity.class);
+                            startActivity(i);
+                            overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+                        }
+                    }, 220);
                 }
 
             }

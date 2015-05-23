@@ -210,17 +210,60 @@ public class GameActivity extends Activity {
 
     public void PressBack(View view)
     {
-        super.finish();
+        LayoutInflater layoutInflater
+                = (LayoutInflater) getBaseContext()
+                .getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        View popupView = layoutInflater.inflate(R.layout.confirm_close, null);
+        final PopupWindow popupWindowWin = new PopupWindow(
+                popupView,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+
+
+        ImageView imgVConfirm;
+        ImageView imgVCancel;
+        imgVCancel = (ImageView) popupView.findViewById(R.id.imgVCancel);
+        imgVCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindowWin.dismiss();
+            }
+        });
+        imgVConfirm = (ImageView) popupView.findViewById(R.id.imgVConfirm);
+        imgVConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        popupWindowWin.showAtLocation(findViewById(R.id.rootLayout), 0, 0, -10);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        PressBack(null);
     }
 
     public void StartGameShop(View view)
     {
-        Intent i = new Intent(GameActivity.this, MarketActivity.class);
-        startActivity(i);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(GameActivity.this, MarketActivity.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+            }
+        }, 220);
     }
     //endregion
 
     //region #SUPPLEMENT
+
+
+
     private void DisplayAlert(String string, String title)
     {
         AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
@@ -280,8 +323,14 @@ public class GameActivity extends Activity {
                 else
                 {
                     if (preferences.GetCurrentTickets() == 0 && Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
-                        Intent i = new Intent(GameActivity.this, TicketBuyActivity.class);
-                        startActivity(i);
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent i = new Intent(GameActivity.this, TicketBuyActivity.class);
+                                startActivity(i);
+                                overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+                            }
+                        }, 220);
                         finish();
                     } else if (Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
                         preferences.EditTickets(preferences.GetCurrentTickets() - 1);
@@ -323,8 +372,14 @@ public class GameActivity extends Activity {
             @Override
             public void onClick(View v) {
                 if (preferences.GetCurrentTickets() == 0 && Globals.CurrentPackage.Id == preferences.GetCurrentPackage()) {
-                    Intent i = new Intent(GameActivity.this, TicketBuyActivity.class);
-                    startActivity(i);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent i = new Intent(GameActivity.this, TicketBuyActivity.class);
+                            startActivity(i);
+                            overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+                        }
+                    }, 220);
                     finish();
                 }
                 else {

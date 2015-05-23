@@ -70,6 +70,28 @@ public class MainActivity extends ActionBarActivity {
         catch (Exception ex) {
             Globals.DisplayAlert(this, ex.getMessage(), "Error occured");
         }
+        Globals.RateRequestDone = true;
+        ShowRateUs();
+    }
+
+    public void ShowRateUs()
+    {
+        boolean s = preferences.AskForRate();
+        if(preferences.AskForRate()) {
+            if (Globals.RateRequestDone == true) {
+                Globals.RateRequestDone = false;
+                //Log.d("animButton", "Click");
+                //Intent i = new Intent(MainActivity.this, RateUsActivity.class);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(MainActivity.this, RateUsActivity.class);
+                        overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+                        startActivity(i);
+                    }
+                }, 1000 * 60 * 5);
+            }
+        }
     }
 
     public void StartGame(View view)
@@ -103,20 +125,37 @@ public class MainActivity extends ActionBarActivity {
 
     public void StartGameshop(View view)
     {
-        Intent i = new Intent(MainActivity.this, MarketActivity.class);
-        startActivity(i);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(MainActivity.this, MarketActivity.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+            }
+        }, 220);
     }
 
     public void StartAboutUs(View view)
     {
-        Intent i = new Intent(MainActivity.this, AboutUsActivity.class);
-        startActivity(i);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(MainActivity.this, MarketActivity.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+            }
+        }, 220);
     }
 
-    public void StartTicketShop(View view)
-    {
-        Intent i = new Intent(MainActivity.this, TicketBuyActivity.class);
-        startActivity(i);
+    public void StartTicketShop(View view) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(MainActivity.this, TicketBuyActivity.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+            }
+        }, 220);
     }
 
     public static void CountTime(String instruction)

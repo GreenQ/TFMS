@@ -63,13 +63,15 @@
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:background="@drawable/confirm"/>
+                android:background="@drawable/confirm"
+                android:id="@+id/imgVConfirm"/>
 
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginLeft="100dp"
-                android:background="@drawable/cancel"/>
+                android:background="@drawable/cancel"
+                android:id="@+id/imgVCancel"/>
 
             </RelativeLayout>
 

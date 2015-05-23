@@ -21,6 +21,7 @@ public class Globals {
     public static boolean IsCorrect;
     public static long timeLeft;
     public static CountDownTimer globalTimer;
+    public static boolean RateRequestDone;
 
     public static Package[] GetPackages()
     {
